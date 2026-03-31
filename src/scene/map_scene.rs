@@ -1,9 +1,7 @@
 use crate::{
-    action::return_map::ReturnMap,
-    dialog::{Dialog, DialogBox, DialogOption},
     map::Map,
     player::Player,
-    scene::{Scene, SceneTransition, dialog_scene::DialogScene},
+    scene::{Scene, SceneTransition},
 };
 use macroquad::prelude::*;
 
@@ -67,13 +65,7 @@ impl Scene for MapScene {
                         .get_mut(target)
                         .expect("expected room to enter exists")
                         .mark_visited();
-                    return SceneTransition::Push(Box::new(DialogScene::new(Dialog::new(
-                        "Your Title",
-                        vec![DialogBox::new(
-                            "Your description here",
-                            vec![DialogOption::new("Return to Map", Box::new(ReturnMap), 0)],
-                        )],
-                    ))));
+                    return self.get_map().get_room(target).get_event().trigger(player);
                 }
             }
         }

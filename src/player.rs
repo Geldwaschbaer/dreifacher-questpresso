@@ -22,4 +22,8 @@ impl Player {
     pub fn get_dialog_position(&self) -> usize {
         self.dialog_position
     }
+
+    pub fn set_dialog_position(&mut self, position: usize) {
+        self.dialog_position = position;
+    }
 }

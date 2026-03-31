@@ -1,0 +1,39 @@
+{
+    "type": "OpenDialog",
+    "data": {
+        "title": "Generic title",
+        "dialogs": [
+            {
+                "description": "Welcome to the game.",
+                "options": [
+                    {
+                        "description": "Already know everything",
+                        "event": {
+                            "type": "ReturnToMap"
+                        },
+                        "next": 0
+                    },
+                    {
+                        "description": "Tell me more.",
+                        "event": {
+                            "type": "Nothing"
+                        },
+                        "next": 1
+                    }
+                ]
+            },
+            {
+                "description": "Slay the dragon! I don't know more.",
+                "options": [
+                    {
+                        "description": "Thanks, that was really helpful!",
+                        "event": {
+                            "type": "ReturnToMap"
+                        },
+                        "next": 1
+                    }
+                ]
+            }
+        ]
+    }
+}

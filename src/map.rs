@@ -1,8 +1,8 @@
 use macroquad::prelude::*;
 
 use crate::{
-    action::encounter::Encounter,
     colors::{ACTIVATED, AVAILABLE},
+    event::Event,
 };
 
 pub struct Map {
@@ -10,7 +10,7 @@ pub struct Map {
 }
 
 impl Map {
-    pub fn new() -> Map {
+    pub async fn new() -> Map {
         //    r5
         //   / \
         //  r3 r4
@@ -19,18 +19,17 @@ impl Map {
         //  \  /
         //   r0
         let rooms = {
-            let mut r0 =
-                Room::with_neighbours(Box::new(Encounter::default()), vec2(200., 100.), vec![1, 2]);
+            let serialized = load_string("assets/event/welcome.json")
+                .await
+                .expect("file exists");
+            let welcome: Event = serde_json::from_str(&serialized).unwrap();
+            let mut r0 = Room::with_neighbours(Event::ReturnToMap, vec2(200., 100.), vec![1, 2]);
             r0.mark_visited();
-            let r1 =
-                Room::with_neighbours(Box::new(Encounter::default()), vec2(100., 200.), vec![3]);
-            let r2 =
-                Room::with_neighbours(Box::new(Encounter::default()), vec2(300., 200.), vec![3, 4]);
-            let r3 =
-                Room::with_neighbours(Box::new(Encounter::default()), vec2(100., 300.), vec![5]);
-            let r4 =
-                Room::with_neighbours(Box::new(Encounter::default()), vec2(300., 300.), vec![5]);
-            let r5 = Room::new(Box::new(Encounter::default()), vec2(200., 400.));
+            let r1 = Room::with_neighbours(welcome, vec2(100., 200.), vec![3]);
+            let r2 = Room::with_neighbours(Event::ReturnToMap, vec2(300., 200.), vec![3, 4]);
+            let r3 = Room::with_neighbours(Event::ReturnToMap, vec2(100., 300.), vec![5]);
+            let r4 = Room::with_neighbours(Event::ReturnToMap, vec2(300., 300.), vec![5]);
+            let r5 = Room::new(Event::ReturnToMap, vec2(200., 400.));
             vec![r0, r1, r2, r3, r4, r5]
         };
 
@@ -89,34 +88,26 @@ impl Map {
     }
 }
 
-use crate::action::Action;
-use macroquad::math::Vec2;
-use std::boxed::Box;
-
 pub struct Room {
-    action: Box<dyn Action>,
+    event: Event,
     position: Vec2,
     neighbours: Vec<usize>,
     visited: bool,
 }
 
 impl Room {
-    pub fn new(action: Box<dyn Action>, position: Vec2) -> Room {
+    pub fn new(event: Event, position: Vec2) -> Room {
         Room {
-            action,
+            event,
             position,
             neighbours: Vec::new(),
             visited: false,
         }
     }
 
-    pub fn with_neighbours(
-        action: Box<dyn Action>,
-        position: Vec2,
-        neighbours: Vec<usize>,
-    ) -> Room {
+    pub fn with_neighbours(event: Event, position: Vec2, neighbours: Vec<usize>) -> Room {
         Room {
-            action,
+            event,
             position,
             neighbours,
             visited: false,
@@ -125,6 +116,10 @@ impl Room {
 
     pub fn link_neighbour(&mut self, room: usize) {
         self.neighbours.push(room);
+    }
+
+    pub fn get_event(&self) -> &Event {
+        &self.event
     }
 
     pub fn get_position(&self) -> Vec2 {

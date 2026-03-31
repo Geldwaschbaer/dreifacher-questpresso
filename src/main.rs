@@ -1,9 +1,9 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
 
-mod action;
 mod colors;
 mod dialog;
+mod event;
 mod map;
 mod mob;
 mod player;
@@ -29,7 +29,7 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     let mut player = Player::new();
-    let mut manager = SceneManager::new(MapScene::new(Map::new()));
+    let mut manager = SceneManager::new(MapScene::new(Map::new().await));
 
     loop {
         #[cfg(not(target_arch = "wasm32"))]

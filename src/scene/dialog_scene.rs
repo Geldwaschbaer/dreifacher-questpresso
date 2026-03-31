@@ -51,8 +51,15 @@ impl Scene for DialogScene {
             .get_dialogs()
             .get(player.get_dialog_position())
             .expect("expect dialog node exists");
+        draw_text(
+            dialog_box.get_description(),
+            screen_width() * 0.20,
+            screen_height() * 0.55 + 35.,
+            24.0,
+            WHITE,
+        );
         for (index, dialog_option) in dialog_box.get_options().iter().enumerate() {
-            let y = screen_height() * 0.55 + 35. + index as f32 * 25.0;
+            let y = screen_height() * 0.55 + 35. + 24. + index as f32 * 25.0;
             draw_text(
                 &format!("{}. ", index + 1),
                 screen_width() * 0.16,
@@ -78,7 +85,8 @@ impl Scene for DialogScene {
             .expect("expect dialog node exists");
         for (index, dialog_option) in dialog_box.get_options().iter().enumerate() {
             if is_key_down(KEY_CODES[index]) {
-                return dialog_option.get_action().activate(player);
+                player.set_dialog_position(dialog_option.get_next());
+                return dialog_option.get_event().trigger(player);
             }
             if is_key_down(KeyCode::Left) {}
         }

@@ -1,17 +1,19 @@
-use crate::action::Action;
+use crate::event::Event;
+use serde::Deserialize;
 
+#[derive(Deserialize, Clone)]
 pub struct Dialog {
-    title: &'static str,
+    title: String,
     dialogs: Vec<DialogBox>,
 }
 
 impl Dialog {
-    pub fn new(title: &'static str, dialogs: Vec<DialogBox>) -> Dialog {
+    pub fn new(title: String, dialogs: Vec<DialogBox>) -> Dialog {
         Dialog { title, dialogs }
     }
 
-    pub fn get_title(&self) -> &'static str {
-        self.title
+    pub fn get_title(&self) -> &str {
+        &self.title
     }
 
     pub fn get_dialogs(&self) -> &Vec<DialogBox> {
@@ -19,20 +21,21 @@ impl Dialog {
     }
 }
 
+#[derive(Deserialize, Clone)]
 pub struct DialogBox {
-    description: &'static str,
+    description: String,
     options: Vec<DialogOption>,
 }
 
 impl DialogBox {
-    pub fn new(description: &'static str, options: Vec<DialogOption>) -> DialogBox {
+    pub fn new(description: String, options: Vec<DialogOption>) -> DialogBox {
         DialogBox {
             description,
             options,
         }
     }
 
-    pub fn get_description(&self) -> &'static str {
+    pub fn get_description(&self) -> &str {
         &self.description
     }
 
@@ -41,27 +44,28 @@ impl DialogBox {
     }
 }
 
+#[derive(Deserialize, Clone)]
 pub struct DialogOption {
-    description: &'static str,
-    action: Box<dyn Action>,
+    description: String,
+    event: Event,
     next: usize,
 }
 
 impl DialogOption {
-    pub fn new(description: &'static str, action: Box<dyn Action>, next: usize) -> DialogOption {
+    pub fn new(description: String, event: Event, next: usize) -> DialogOption {
         DialogOption {
             description,
-            action,
+            event,
             next,
         }
     }
 
-    pub fn get_description(&self) -> &'static str {
-        self.description
+    pub fn get_description(&self) -> &str {
+        &self.description
     }
 
-    pub fn get_action(&self) -> &Box<dyn Action> {
-        &self.action
+    pub fn get_event(&self) -> &Event {
+        &self.event
     }
 
     pub fn get_next(&self) -> usize {
