@@ -5,6 +5,18 @@ use crate::{
 };
 use macroquad::prelude::*;
 
+pub const KEY_CODES: [KeyCode; 9] = [
+    KeyCode::Key1,
+    KeyCode::Key2,
+    KeyCode::Key3,
+    KeyCode::Key4,
+    KeyCode::Key5,
+    KeyCode::Key6,
+    KeyCode::Key7,
+    KeyCode::Key8,
+    KeyCode::Key9,
+];
+
 pub struct DialogScene(Dialog);
 
 impl DialogScene {
@@ -64,7 +76,12 @@ impl Scene for DialogScene {
             .get_dialogs()
             .get(player.get_dialog_position())
             .expect("expect dialog node exists");
-        for (index, dialog_option) in dialog_box.get_options().iter().enumerate() {}
+        for (index, dialog_option) in dialog_box.get_options().iter().enumerate() {
+            if is_key_down(KEY_CODES[index]) {
+                return dialog_option.get_action().activate(player);
+            }
+            if is_key_down(KeyCode::Left) {}
+        }
         SceneTransition::None
     }
 }

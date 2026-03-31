@@ -1,5 +1,5 @@
 pub mod encounter;
-mod return_map;
+pub mod return_map;
 
 use crate::{player::Player, scene::SceneTransition};
 

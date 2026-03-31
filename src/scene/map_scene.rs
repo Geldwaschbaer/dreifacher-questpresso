@@ -1,5 +1,6 @@
 use crate::{
-    dialog::{Dialog, DialogBox},
+    action::return_map::ReturnMap,
+    dialog::{Dialog, DialogBox, DialogOption},
     map::Map,
     player::Player,
     scene::{Scene, SceneTransition, dialog_scene::DialogScene},
@@ -68,7 +69,10 @@ impl Scene for MapScene {
                         .mark_visited();
                     return SceneTransition::Push(Box::new(DialogScene::new(Dialog::new(
                         "Your Title",
-                        vec![DialogBox::new("Your description here", vec![])],
+                        vec![DialogBox::new(
+                            "Your description here",
+                            vec![DialogOption::new("Return to Map", Box::new(ReturnMap), 0)],
+                        )],
                     ))));
                 }
             }
