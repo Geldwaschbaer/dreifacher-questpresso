@@ -12,7 +12,9 @@ pub enum SceneTransition {
     // No transition is happening
     None,
     // Switch to the specified scene
-    Switch(Box<dyn Scene>),
+    Switch(SceneBox),
     // Return to the global map scene
     Return,
 }
+
+pub type SceneBox = Box<dyn Scene>;
