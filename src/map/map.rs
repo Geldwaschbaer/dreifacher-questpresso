@@ -1,8 +1,10 @@
 use macroquad::prelude::*;
-use macroquad::shapes::draw_line;
 
-use crate::action::encounter::Encounter;
-use crate::map::room::Room;
+use crate::{
+    action::encounter::Encounter,
+    colors::{ACTIVATED, AVAILABLE},
+    map::room::Room,
+};
 
 pub struct Map {
     rooms: Vec<Room>,
@@ -42,18 +44,18 @@ impl Map {
                     neig.get_position().x,
                     neig.get_position().y,
                     if choosen { 3. } else { 2. },
-                    Color::from_hex(if choosen { 0x1b252e } else { 0x585858 }),
+                    if choosen { ACTIVATED } else { AVAILABLE },
                 );
             }
             draw_circle(
                 room.get_position().x,
                 room.get_position().y,
                 14.,
-                Color::from_hex(if room.is_visited() {
-                    0x1b252e
+                if room.is_visited() {
+                    ACTIVATED
                 } else {
-                    0x585858
-                }),
+                    AVAILABLE
+                },
             );
             if room.is_visited() {
                 draw_arc(
@@ -64,7 +66,7 @@ impl Map {
                     20.,
                     2.,
                     320.,
-                    Color::from_hex(0x1b252e),
+                    ACTIVATED,
                 )
             }
         }

@@ -2,6 +2,7 @@
 #![allow(unused_variables)]
 
 mod action;
+mod colors;
 mod map;
 mod mob;
 mod player;
