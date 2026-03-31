@@ -6,6 +6,7 @@ pub struct Room {
     action: Box<dyn Action>,
     position: Vec2,
     neighbours: Vec<usize>,
+    visited: bool,
 }
 
 impl Room {
@@ -14,6 +15,7 @@ impl Room {
             action,
             position,
             neighbours: Vec::new(),
+            visited: false,
         }
     }
 
@@ -22,6 +24,7 @@ impl Room {
             action,
             position,
             neighbours,
+            visited: false,
         }
     }
 
@@ -35,5 +38,13 @@ impl Room {
 
     pub fn get_neighbours(&self) -> &Vec<usize> {
         &self.neighbours
+    }
+
+    pub fn is_visited(&self) -> bool {
+        self.visited
+    }
+
+    pub fn mark_visited(&mut self) {
+        self.visited = true;
     }
 }
