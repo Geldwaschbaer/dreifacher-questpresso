@@ -1,5 +1,5 @@
 use crate::{
-    dialog::{Dialog, DialogBox, DialogOption},
+    dialog::{Dialog, DialogBox},
     map::Map,
     player::Player,
     scene::{Scene, SceneTransition, dialog_scene::DialogScene},
@@ -66,7 +66,7 @@ impl Scene for MapScene {
                         .get_mut(target)
                         .expect("expected room to enter exists")
                         .mark_visited();
-                    return SceneTransition::Switch(Box::new(DialogScene::new(Dialog::new(
+                    return SceneTransition::Push(Box::new(DialogScene::new(Dialog::new(
                         "Your Title",
                         vec![DialogBox::new("Your description here", vec![])],
                     ))));

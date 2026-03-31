@@ -14,7 +14,7 @@ use macroquad::prelude::*;
 use crate::{
     map::Map,
     player::Player,
-    scene::{SceneBox, SceneTransition, map_scene::MapScene},
+    scene::{Scene, SceneManager, map_scene::MapScene},
 };
 
 fn window_conf() -> Conf {
@@ -29,7 +29,7 @@ fn window_conf() -> Conf {
 #[macroquad::main(window_conf)]
 async fn main() {
     let mut player = Player::new();
-    let mut active_scene: SceneBox = Box::new(MapScene::new(Map::new()));
+    let mut manager = SceneManager::new(MapScene::new(Map::new()));
 
     loop {
         #[cfg(not(target_arch = "wasm32"))]
@@ -37,12 +37,8 @@ async fn main() {
             break;
         }
 
-        active_scene.draw(&player);
-        match active_scene.update(&mut player) {
-            SceneTransition::Switch(new_scene) => active_scene = new_scene,
-            SceneTransition::Return => {}
-            SceneTransition::None => {}
-        }
+        manager.draw(&player);
+        manager.update(&mut player);
 
         next_frame().await
     }
