@@ -7,7 +7,14 @@
           "cur_health": 10,
           "max_health": 20
         },
-        "attacks": []
+        "attacks": [
+          {
+            "description": "Bad Breath",
+            "damage": 5,
+            "heal": 1,
+            "area_of_effect": false
+          }
+        ]
       }
   }
 }
