@@ -1,7 +1,7 @@
 use crate::{
     draw::*,
     entity::{enemy::Enemy, player::Player},
-    scene::{KEY_CODES, Scene, SceneTransition},
+    scene::{KEY_CODES, Scene, SceneTransition, game_over_scene::GameOverScene},
 };
 use macroquad::prelude::*;
 
@@ -67,7 +67,22 @@ impl Scene for CombatScene {
             if let Some(attack) = attack_used {
                 player
                     .get_entity_mut()
-                    .use_attack(attack, self.0.get_entity_mut())
+                    .use_attack(attack, self.0.get_entity_mut());
+                let attack_count = self.get_enemy().get_entity().get_attacks().len();
+                if self.get_enemy().get_entity().get_health().get_cur_health() > 0
+                    && attack_count > 0
+                {
+                    let attack = rand::gen_range(0, attack_count);
+                    self.0
+                        .get_entity_mut()
+                        .use_attack(attack, player.get_entity_mut());
+                }
+                if player.get_entity().get_health().get_cur_health() <= 0 {
+                    return SceneTransition::Push(Box::new(GameOverScene::new(format!(
+                        "You were killed by {}.",
+                        self.get_enemy().get_entity().get_name()
+                    ))));
+                }
             }
             SceneTransition::None
         } else {

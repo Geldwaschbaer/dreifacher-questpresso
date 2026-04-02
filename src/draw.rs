@@ -64,10 +64,10 @@ pub fn draw_p(pos: &mut Vec2, text: &str) {
 }
 
 pub struct DrawParagraphParams {
-    font_size: f32,
-    color: Color,
-    split_line: bool,
-    margin: Rect,
+    pub font_size: f32,
+    pub color: Color,
+    pub split_line: bool,
+    pub margin: Rect,
 }
 
 impl Default for DrawParagraphParams {

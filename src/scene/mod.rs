@@ -1,5 +1,6 @@
 pub mod combat_scene;
 pub mod dialog_scene;
+pub mod game_over_scene;
 pub mod map_scene;
 
 use crate::{entity::player::Player, scene::map_scene::MapScene};
