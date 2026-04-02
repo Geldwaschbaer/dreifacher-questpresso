@@ -1,4 +1,4 @@
-use super::{Entity, Health};
+use crate::entity::{Attack, Entity, Health};
 
 pub struct Player {
     map_position: usize,
@@ -11,7 +11,15 @@ impl Player {
         Player {
             map_position: 0,
             dialog_position: 0,
-            entity: Entity::new("Player".into(), Health::new(20), vec![]),
+            entity: Entity::new(
+                "Player".into(),
+                Health::new(20),
+                vec![
+                    Attack::new("Punch them with your fist!".into(), 10, 0, false),
+                    Attack::new("Trink a heal potion!".into(), 0, 5, false),
+                    Attack::new("Drain the life of your enemies!".into(), 3, 3, true),
+                ],
+            ),
         }
     }
 
@@ -33,5 +41,9 @@ impl Player {
 
     pub fn get_entity(&self) -> &Entity {
         &self.entity
+    }
+
+    pub fn get_entity_mut(&mut self) -> &mut Entity {
+        &mut self.entity
     }
 }

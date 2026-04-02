@@ -47,13 +47,17 @@ impl Entity {
                 1
             };
         self.health.cur_health = (self.health.cur_health
-            + attack.health_restoration as i32
+            + attack.heal as i32
                 * if attack.area_of_effect {
                     self.count as i32
                 } else {
                     1
                 })
-        .max(self.health.max_health as i32);
+        .min(self.health.max_health as i32);
+    }
+
+    pub fn get_attacks(&self) -> &Vec<Attack> {
+        &self.attacks
     }
 }
 
@@ -83,7 +87,22 @@ impl Health {
 #[derive(Clone, Deserialize)]
 pub struct Attack {
     description: String,
-    area_of_effect: bool,
     damage: u32,
-    health_restoration: u32,
+    heal: u32,
+    area_of_effect: bool,
+}
+
+impl Attack {
+    pub fn new(description: String, damage: u32, heal: u32, area_of_effect: bool) -> Attack {
+        Attack {
+            description,
+            damage,
+            heal,
+            area_of_effect,
+        }
+    }
+
+    pub fn get_description(&self) -> &str {
+        &self.description
+    }
 }

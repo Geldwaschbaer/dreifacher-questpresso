@@ -1,7 +1,7 @@
 use crate::{
     draw::*,
     entity::{enemy::Enemy, player::Player},
-    scene::{Scene, SceneTransition},
+    scene::{KEY_CODES, Scene, SceneTransition},
 };
 use macroquad::prelude::*;
 
@@ -43,13 +43,32 @@ impl Scene for CombatScene {
                 self.get_enemy().get_entity().get_name()
             ),
         );
-        draw_ol(&mut pos, ["A", "B", "C"].into_iter());
+        draw_ol(
+            &mut pos,
+            player
+                .get_entity()
+                .get_attacks()
+                .iter()
+                .map(|v| v.get_description()),
+        );
     }
 
     fn update(&mut self, player: &mut Player) -> SceneTransition {
         if self.get_enemy().get_entity().get_health().get_cur_health() > 0 {
             // combat continues
-
+            let attack_used = 'val: loop {
+                for (index, attack) in player.get_entity().get_attacks().iter().enumerate() {
+                    if is_key_pressed(KEY_CODES[index]) {
+                        break 'val Some(index);
+                    }
+                }
+                break None;
+            };
+            if let Some(attack) = attack_used {
+                player
+                    .get_entity_mut()
+                    .use_attack(attack, self.0.get_entity_mut())
+            }
             SceneTransition::None
         } else {
             // killed the enemy

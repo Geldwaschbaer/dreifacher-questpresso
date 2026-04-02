@@ -3,6 +3,19 @@ pub mod dialog_scene;
 pub mod map_scene;
 
 use crate::{entity::player::Player, scene::map_scene::MapScene};
+use macroquad::prelude::*;
+
+pub const KEY_CODES: [KeyCode; 9] = [
+    KeyCode::Key1,
+    KeyCode::Key2,
+    KeyCode::Key3,
+    KeyCode::Key4,
+    KeyCode::Key5,
+    KeyCode::Key6,
+    KeyCode::Key7,
+    KeyCode::Key8,
+    KeyCode::Key9,
+];
 
 pub trait Scene {
     fn draw(&self, player: &Player);

@@ -2,21 +2,9 @@ use crate::{
     dialog::Dialog,
     draw::*,
     entity::player::Player,
-    scene::{Scene, SceneTransition},
+    scene::{KEY_CODES, Scene, SceneTransition},
 };
 use macroquad::prelude::*;
-
-pub const KEY_CODES: [KeyCode; 9] = [
-    KeyCode::Key1,
-    KeyCode::Key2,
-    KeyCode::Key3,
-    KeyCode::Key4,
-    KeyCode::Key5,
-    KeyCode::Key6,
-    KeyCode::Key7,
-    KeyCode::Key8,
-    KeyCode::Key9,
-];
 
 pub struct DialogScene {
     dialog: Dialog,
