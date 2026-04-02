@@ -1,10 +1,13 @@
 {
   "type": "EnterCombat",
   "data": {
-      "name": "Zombie",
-      "health": {
-        "cur_health": 10,
-        "max_health": 20
+      "entity": {
+        "name": "Zombie",
+        "health": {
+          "cur_health": 10,
+          "max_health": 20
+        },
+        "attacks": []
       }
   }
 }
