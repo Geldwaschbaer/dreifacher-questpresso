@@ -1,9 +1,8 @@
-use macroquad::prelude::*;
-
 use crate::{
     draw::{ACTIVATED, AVAILABLE},
     event::Event,
 };
+use macroquad::prelude::*;
 
 pub struct Map {
     rooms: Vec<Room>,
@@ -27,13 +26,13 @@ impl Map {
                 .await
                 .expect("file exists");
             let combat: Event = serde_json::from_str(&serialized).expect("could not parse event");
-            let mut r0 = Room::with_neighbours(Event::ReturnToMap, vec2(200., 100.), vec![1, 2]);
+            let mut r0 = Room::with_neighbours(Event::ReturnToMap, vec2(0.5, 0.2), vec![1, 2]);
             r0.mark_visited();
-            let r1 = Room::with_neighbours(welcome, vec2(100., 200.), vec![3]);
-            let r2 = Room::with_neighbours(combat, vec2(300., 200.), vec![3, 4]);
-            let r3 = Room::with_neighbours(Event::ReturnToMap, vec2(100., 300.), vec![5]);
-            let r4 = Room::with_neighbours(Event::ReturnToMap, vec2(300., 300.), vec![5]);
-            let r5 = Room::new(Event::ReturnToMap, vec2(200., 400.));
+            let r1 = Room::with_neighbours(welcome, vec2(0.3, 0.4), vec![3]);
+            let r2 = Room::with_neighbours(combat, vec2(0.7, 0.4), vec![3, 4]);
+            let r3 = Room::with_neighbours(Event::ReturnToMap, vec2(0.3, 0.6), vec![5]);
+            let r4 = Room::with_neighbours(Event::ReturnToMap, vec2(0.7, 0.6), vec![5]);
+            let r5 = Room::new(Event::ReturnToMap, vec2(0.5, 0.8));
             vec![r0, r1, r2, r3, r4, r5]
         };
 
@@ -46,17 +45,17 @@ impl Map {
                 let neig = self.rooms.get(*neig).expect("element exists");
                 let choosen = room.is_visited() && neig.is_visited();
                 draw_line(
-                    room.get_position().x,
-                    room.get_position().y,
-                    neig.get_position().x,
-                    neig.get_position().y,
+                    room.get_position().x * screen_width(),
+                    room.get_position().y * screen_height(),
+                    neig.get_position().x * screen_width(),
+                    neig.get_position().y * screen_height(),
                     if choosen { 3. } else { 2. },
                     if choosen { ACTIVATED } else { AVAILABLE },
                 );
             }
             draw_circle(
-                room.get_position().x,
-                room.get_position().y,
+                room.get_position().x * screen_width(),
+                room.get_position().y * screen_height(),
                 14.,
                 if room.is_visited() {
                     ACTIVATED
@@ -66,8 +65,8 @@ impl Map {
             );
             if room.is_visited() {
                 draw_arc(
-                    room.get_position().x,
-                    room.get_position().y,
+                    room.get_position().x * screen_width(),
+                    room.get_position().y * screen_height(),
                     120,
                     20.,
                     20.,

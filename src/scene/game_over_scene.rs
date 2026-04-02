@@ -1,8 +1,3 @@
-use macroquad::{
-    prelude::scene::clear,
-    window::{screen_height, screen_width},
-};
-
 use crate::{
     draw::*,
     entity::player::Player,

@@ -19,7 +19,7 @@ impl MapScene {
 
 impl Scene for MapScene {
     fn draw(&self, player: &Player) {
-        clear_background(Color::from_hex(0x8d8b7f));
+        clear_background(WHITE);
         self.get_map().draw();
         let room = self
             .get_map()
@@ -33,16 +33,16 @@ impl Scene for MapScene {
                 .get(*neig)
                 .expect("element exists");
             draw_line(
-                room.get_position().x,
-                room.get_position().y,
-                neig.get_position().x,
-                neig.get_position().y,
+                room.get_position().x * screen_width(),
+                room.get_position().y * screen_height(),
+                neig.get_position().x * screen_width(),
+                neig.get_position().y * screen_height(),
                 2.,
                 Color::from_hex(0x1b252e),
             );
             draw_circle(
-                neig.get_position().x,
-                neig.get_position().y,
+                neig.get_position().x * screen_width(),
+                neig.get_position().y * screen_height(),
                 16.,
                 Color::from_hex(0x1b252e),
             );
@@ -56,8 +56,8 @@ impl Scene for MapScene {
             for neig_num in room.get_neighbours() {
                 let target = *neig_num;
                 let neig = self.get_map().get_room(target);
-                let dx = neig.get_position().x - x;
-                let dy = neig.get_position().y - y;
+                let dx = neig.get_position().x * screen_width() - x;
+                let dy = neig.get_position().y * screen_height() - y;
                 if (dx * dx + dy * dy).sqrt() < 14.0 {
                     player.enter_room(target);
                     self.0
