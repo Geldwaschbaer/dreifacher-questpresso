@@ -47,6 +47,7 @@ impl DialogBox {
 #[derive(Deserialize, Clone)]
 pub struct DialogOption {
     description: String,
+    #[serde(default = "Event::nothing")]
     event: Event,
     next: usize,
 }

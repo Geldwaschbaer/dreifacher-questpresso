@@ -1,9 +1,10 @@
-use crate::entity::Entity;
+use crate::{entity::Entity, event::Event};
 use serde::Deserialize;
 
 #[derive(Clone, Deserialize)]
 pub struct Enemy {
     entity: Entity,
+    on_death: Box<Event>,
 }
 
 impl Enemy {
@@ -13,5 +14,9 @@ impl Enemy {
 
     pub fn get_entity_mut(&mut self) -> &mut Entity {
         &mut self.entity
+    }
+
+    pub fn get_on_death(&self) -> &Event {
+        &self.on_death
     }
 }

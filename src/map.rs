@@ -138,15 +138,13 @@ impl AsyncFrom<RoomLayout> for Room {
             let len = layout.event_options.len();
             if len > 0 {
                 let element = rand::gen_range(0, layout.event_options.len());
-                let serialized = load_string(
-                    layout
-                        .event_options
-                        .get(element)
-                        .expect("event option exists"),
-                )
-                .await
-                .expect("file exists");
-                serde_json::from_str(&serialized).expect("could not parse event")
+                let file = layout
+                    .event_options
+                    .get(element)
+                    .expect("event option exists");
+                let serialized = load_string(file).await.expect("file exists");
+                serde_json::from_str(&serialized)
+                    .expect(&format!("could not parse event from file '{}'", file))
             } else {
                 Event::Nothing
             }

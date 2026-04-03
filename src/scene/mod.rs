@@ -3,7 +3,7 @@ pub mod dialog_scene;
 pub mod game_over_scene;
 pub mod map_scene;
 
-use crate::{entity::player::Player, map::Room, scene::map_scene::MapScene};
+use crate::{entity::player::Player, scene::map_scene::MapScene};
 use macroquad::prelude::*;
 
 pub const KEY_CODES: [KeyCode; 9] = [

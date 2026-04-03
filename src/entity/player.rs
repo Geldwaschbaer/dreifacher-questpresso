@@ -15,8 +15,8 @@ impl Player {
                 "Player".into(),
                 Health::new(20),
                 vec![
-                    Attack::new("Punch them with your fist!".into(), 10, 0, false),
-                    Attack::new("Trink a heal potion!".into(), 0, 5, false),
+                    Attack::new("Punch them with your fist!".into(), 6, 0, false),
+                    Attack::new("Trink a heal potion!".into(), 0, 6, false),
                     Attack::new("Drain the life of your enemies!".into(), 3, 3, true),
                 ],
             ),

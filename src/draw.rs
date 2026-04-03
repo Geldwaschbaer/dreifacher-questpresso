@@ -75,7 +75,7 @@ impl Default for DrawParagraphParams {
         DrawParagraphParams {
             font_size: 22.,
             color: BLACK,
-            split_line: false,
+            split_line: true,
             margin: Rect::new(0., 0., 0., 0.),
         }
     }

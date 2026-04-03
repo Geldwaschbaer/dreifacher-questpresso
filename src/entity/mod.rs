@@ -59,6 +59,10 @@ impl Entity {
     pub fn get_attacks(&self) -> &Vec<Attack> {
         &self.attacks
     }
+
+    pub fn get_attacks_mut(&mut self) -> &mut Vec<Attack> {
+        &mut self.attacks
+    }
 }
 
 #[derive(Clone, Deserialize)]

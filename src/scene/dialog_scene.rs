@@ -15,7 +15,7 @@ impl DialogScene {
     pub fn new(dialog: Dialog) -> DialogScene {
         DialogScene {
             dialog,
-            cooldown: 0.,
+            cooldown: 0.5,
         }
     }
 

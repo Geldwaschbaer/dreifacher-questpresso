@@ -76,10 +76,12 @@ impl Scene for CombatScene {
                     self.0
                         .get_entity_mut()
                         .use_attack(attack, player.get_entity_mut());
+                } else {
+                    return self.0.get_on_death().trigger(player);
                 }
                 if player.get_entity().get_health().get_cur_health() <= 0 {
                     return SceneTransition::Push(Box::new(GameOverScene::new(format!(
-                        "You were killed by {}.",
+                        "You were killed by: {}",
                         self.get_enemy().get_entity().get_name()
                     ))));
                 }

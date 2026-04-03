@@ -22,6 +22,9 @@
           "area_of_effect": false
         }
       ]
+    },
+    "on_death": {
+      "type": "ReturnToMap"
     }
   }
 }
