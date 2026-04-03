@@ -1,0 +1,27 @@
+{
+  "type": "EnterCombat",
+  "data": {
+    "entity": {
+      "name": "3 Zombies",
+      "health": {
+        "cur_health": 16,
+        "max_health": 16
+      },
+      "count": 3,
+      "attacks": [
+        {
+          "description": "Bad Breath",
+          "damage": 4,
+          "heal": 0,
+          "area_of_effect": false
+        },
+        {
+          "description": "Scratch",
+          "damage": 5,
+          "heal": 0,
+          "area_of_effect": false
+        }
+      ]
+    }
+  }
+}

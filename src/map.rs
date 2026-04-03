@@ -2,7 +2,9 @@ use crate::{
     draw::{ACTIVATED, AVAILABLE},
     event::Event,
 };
+use async_from::{AsyncFrom, async_trait};
 use macroquad::prelude::*;
+use serde::Deserialize;
 
 pub struct Map {
     rooms: Vec<Room>,
@@ -17,26 +19,14 @@ impl Map {
         // r1  r2
         //  \  /
         //   r0
-        let rooms = {
-            let serialized = load_string("assets/event/welcome.json")
+        let layout = {
+            let serialized = load_string("assets/layout/level-1.json")
                 .await
                 .expect("file exists");
-            let welcome: Event = serde_json::from_str(&serialized).expect("could not parse event");
-            let serialized = load_string("assets/event/enemy.json")
-                .await
-                .expect("file exists");
-            let combat: Event = serde_json::from_str(&serialized).expect("could not parse event");
-            let mut r0 = Room::with_neighbours(Event::ReturnToMap, vec2(0.5, 0.2), vec![1, 2]);
-            r0.mark_visited();
-            let r1 = Room::with_neighbours(welcome, vec2(0.3, 0.4), vec![3]);
-            let r2 = Room::with_neighbours(combat, vec2(0.7, 0.4), vec![3, 4]);
-            let r3 = Room::with_neighbours(Event::ReturnToMap, vec2(0.3, 0.6), vec![5]);
-            let r4 = Room::with_neighbours(Event::ReturnToMap, vec2(0.7, 0.6), vec![5]);
-            let r5 = Room::new(Event::ReturnToMap, vec2(0.5, 0.8));
-            vec![r0, r1, r2, r3, r4, r5]
+            serde_json::from_str(&serialized).expect("could not parse event")
         };
 
-        Map { rooms }
+        Map::async_from(layout).await
     }
 
     pub fn draw(&self) {
@@ -99,28 +89,6 @@ pub struct Room {
 }
 
 impl Room {
-    pub fn new(event: Event, position: Vec2) -> Room {
-        Room {
-            event,
-            position,
-            neighbours: Vec::new(),
-            visited: false,
-        }
-    }
-
-    pub fn with_neighbours(event: Event, position: Vec2, neighbours: Vec<usize>) -> Room {
-        Room {
-            event,
-            position,
-            neighbours,
-            visited: false,
-        }
-    }
-
-    pub fn link_neighbour(&mut self, room: usize) {
-        self.neighbours.push(room);
-    }
-
     pub fn get_event(&self) -> &Event {
         &self.event
     }
@@ -139,5 +107,55 @@ impl Room {
 
     pub fn mark_visited(&mut self) {
         self.visited = true;
+    }
+}
+
+#[derive(Deserialize)]
+pub struct Layout(Vec<RoomLayout>);
+
+#[derive(Deserialize)]
+pub struct RoomLayout {
+    event_options: Vec<String>,
+    position: (f32, f32),
+    neighbours: Vec<usize>,
+}
+
+#[async_trait]
+impl AsyncFrom<Layout> for Map {
+    async fn async_from(layout: Layout) -> Map {
+        let mut rooms = Vec::new();
+        for layout in layout.0.into_iter() {
+            rooms.push(Room::async_from(layout).await);
+        }
+        Map { rooms }
+    }
+}
+
+#[async_trait]
+impl AsyncFrom<RoomLayout> for Room {
+    async fn async_from(layout: RoomLayout) -> Room {
+        let event = {
+            let len = layout.event_options.len();
+            if len > 0 {
+                let element = rand::gen_range(0, layout.event_options.len());
+                let serialized = load_string(
+                    layout
+                        .event_options
+                        .get(element)
+                        .expect("event option exists"),
+                )
+                .await
+                .expect("file exists");
+                serde_json::from_str(&serialized).expect("could not parse event")
+            } else {
+                Event::Nothing
+            }
+        };
+        Room {
+            event,
+            position: Vec2::new(layout.position.0, layout.position.1),
+            neighbours: layout.neighbours,
+            visited: false,
+        }
     }
 }

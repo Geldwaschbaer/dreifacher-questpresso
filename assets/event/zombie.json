@@ -1,0 +1,26 @@
+{
+  "type": "EnterCombat",
+  "data": {
+    "entity": {
+      "name": "Zombie",
+      "health": {
+        "cur_health": 20,
+        "max_health": 20
+      },
+      "attacks": [
+        {
+          "description": "Bad Breath",
+          "damage": 4,
+          "heal": 0,
+          "area_of_effect": true
+        },
+        {
+          "description": "Scratch",
+          "damage": 5,
+          "heal": 0,
+          "area_of_effect": false
+        }
+      ]
+    }
+  }
+}
