@@ -1,0 +1,26 @@
+{
+  "type": "EnterCombat",
+  "data": {
+    "entity": {
+      "name": "Dragon",
+      "health": {
+        "cur_health": 20,
+        "max_health": 20
+      },
+      "attacks": [
+        {
+          "description": "Fire Breath",
+          "damage": 6,
+          "heal": 0,
+          "area_of_effect": true
+        },
+        {
+          "description": "Claws",
+          "damage": 7,
+          "heal": 0,
+          "area_of_effect": false
+        }
+      ]
+    }
+  }
+}
