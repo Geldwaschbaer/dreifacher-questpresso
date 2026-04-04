@@ -6,25 +6,41 @@ use crate::{
 };
 use macroquad::prelude::*;
 
-pub struct MapScene(Map);
+pub struct MapScene {
+    map: Map,
+    camera_pos: Vec2,
+    last_pos: Option<Vec2>,
+}
 
 impl MapScene {
     pub fn new(map: Map) -> MapScene {
-        MapScene(map)
+        MapScene {
+            map,
+            camera_pos: Vec2::splat(0.),
+            last_pos: None,
+        }
     }
 
     pub fn get_map(&self) -> &Map {
-        &self.0
+        &self.map
     }
 
     pub fn get_map_mut(&mut self) -> &mut Map {
-        &mut self.0
+        &mut self.map
     }
 }
 
 impl Scene for MapScene {
     fn draw(&self, player: &Player) {
         clear_background(WHITE);
+        set_camera(&Camera2D {
+            target: vec2(
+                self.camera_pos.x + screen_width() / 2.0,
+                self.camera_pos.y + screen_height() / 2.0,
+            ),
+            zoom: vec2(2.0 / screen_width(), 2.0 / screen_height()),
+            ..Default::default()
+        });
         let room = self
             .get_map()
             .get_rooms()
@@ -57,6 +73,7 @@ impl Scene for MapScene {
         }
         self.get_map().draw();
 
+        set_default_camera();
         draw_shadowbox(Rect::new(
             screen_width() * 0.8,
             screen_height() * 0.25,
@@ -91,17 +108,27 @@ impl Scene for MapScene {
     }
 
     fn update(&mut self, player: &mut Player) -> SceneTransition {
+        let (x, y) = mouse_position();
+        if is_mouse_button_down(MouseButton::Middle) || is_mouse_button_down(MouseButton::Right) {
+            if let Some(position) = self.last_pos {
+                let dx = x - position.x;
+                let dy = y - position.y;
+                // Just ignore horizontal movement for now.
+                // self.camera_pos.x += dx;
+                self.camera_pos.y += dy;
+            }
+        }
+        self.last_pos = Some(Vec2 { x, y });
         if is_mouse_button_down(MouseButton::Left) {
-            let (x, y) = mouse_position();
             let room = self.get_map().get_room(player.get_map_position());
             for neig_num in room.get_neighbours() {
                 let target = *neig_num;
                 let neig = self.get_map().get_room(target);
-                let dx = neig.get_position().x * screen_width() - x;
-                let dy = neig.get_position().y * screen_height() - y;
+                let dx = neig.get_position().x * screen_width() - x - self.camera_pos.x;
+                let dy = neig.get_position().y * screen_height() - y - self.camera_pos.y;
                 if (dx * dx + dy * dy).sqrt() < 26.0 {
                     player.set_map_position(target);
-                    self.0
+                    self.map
                         .get_rooms_mut()
                         .get_mut(target)
                         .expect("expected room to enter exists")
