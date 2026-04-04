@@ -1,11 +1,13 @@
 use crate::event::{Event, EventBuilder};
 use async_from::{AsyncFrom, async_trait};
+use macroquad::texture::{FilterMode, Texture2D, load_texture};
 use serde::Deserialize;
 
 #[derive(Clone)]
 pub struct Dialog {
     title: String,
     dialogs: Vec<DialogBox>,
+    texture: Texture2D,
 }
 
 impl Dialog {
@@ -16,12 +18,17 @@ impl Dialog {
     pub fn get_dialogs(&self) -> &Vec<DialogBox> {
         &self.dialogs
     }
+
+    pub fn get_texture(&self) -> &Texture2D {
+        &self.texture
+    }
 }
 
 #[derive(Deserialize)]
 pub struct DialogBuilder {
     title: String,
     dialogs: Vec<DialogBoxBuilder>,
+    texture: String,
 }
 
 #[async_trait]
@@ -31,9 +38,14 @@ impl AsyncFrom<DialogBuilder> for Dialog {
         for dialog_builder in value.dialogs {
             dialogs.push(DialogBox::async_from(dialog_builder).await);
         }
+        let texture = load_texture(&value.texture)
+            .await
+            .expect("expect dialog texture exists");
+        texture.set_filter(FilterMode::Nearest);
         Dialog {
             title: value.title,
             dialogs,
+            texture,
         }
     }
 }

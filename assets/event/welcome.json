@@ -2,6 +2,7 @@
   "type": "OpenDialog",
   "data": {
     "title": "ENTER THE DUNGEON",
+    "texture": "assets/dialog/staircase.png",
     "dialogs": [
       {
         "description": "Welcome to the game.",

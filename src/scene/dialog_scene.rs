@@ -27,6 +27,16 @@ impl DialogScene {
 impl Scene for DialogScene {
     fn draw(&self, player: &Player) {
         clear_background(WHITE);
+        draw_texture_ex(
+            self.get_dialog().get_texture(),
+            screen_width() * 0.05,
+            screen_height() * 0.05,
+            WHITE,
+            DrawTextureParams {
+                dest_size: Some(Vec2::new(screen_width() * 0.9, screen_height() * 0.4)),
+                ..Default::default()
+            },
+        );
         draw_shadowbox(Rect::new(
             screen_width() * 0.1,
             screen_height() * 0.5,
