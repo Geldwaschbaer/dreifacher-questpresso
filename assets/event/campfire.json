@@ -1,7 +1,8 @@
 {
   "type": "OpenDialog",
   "data": {
-    "title": "YOU FOUND A CAMPFIRE",
+    "title": "You found a Campfire",
+    "texture": "assets/dialog/labyrinth.png",
     "dialogs": [
       {
         "description": "You can choose to either rest or upgrade your stats.",
