@@ -65,14 +65,6 @@ impl Scene for CombatScene {
                 self.get_enemy().get_entity().get_name()
             ),
         );
-        // draw_ol(
-        //     &mut pos,
-        //     player
-        //         .get_entity()
-        //         .get_attacks()
-        //         .iter()
-        //         .map(|v| v.get_description()),
-        // );
         draw_attacks(&mut pos, player, player.get_entity().get_attacks().iter());
     }
 
