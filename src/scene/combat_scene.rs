@@ -5,15 +5,17 @@ use crate::{
 };
 use macroquad::prelude::*;
 
-pub struct CombatScene(Enemy);
+pub struct CombatScene {
+    enemy: Enemy,
+}
 
 impl CombatScene {
-    pub fn new(mob: Enemy) -> CombatScene {
-        CombatScene(mob)
+    pub fn new(enemy: Enemy) -> CombatScene {
+        CombatScene { enemy }
     }
 
     pub fn get_enemy(&self) -> &Enemy {
-        &self.0
+        &self.enemy
     }
 }
 
@@ -63,14 +65,15 @@ impl Scene for CombatScene {
                 self.get_enemy().get_entity().get_name()
             ),
         );
-        draw_ol(
-            &mut pos,
-            player
-                .get_entity()
-                .get_attacks()
-                .iter()
-                .map(|v| v.get_description()),
-        );
+        // draw_ol(
+        //     &mut pos,
+        //     player
+        //         .get_entity()
+        //         .get_attacks()
+        //         .iter()
+        //         .map(|v| v.get_description()),
+        // );
+        draw_attacks(&mut pos, player, player.get_entity().get_attacks().iter());
     }
 
     fn update(&mut self, player: &mut Player) -> SceneTransition {
@@ -80,11 +83,11 @@ impl Scene for CombatScene {
             if let Some(attack) = attack_used {
                 player
                     .get_entity_mut()
-                    .use_attack(attack, self.0.get_entity_mut());
+                    .use_attack(attack, self.enemy.get_entity_mut());
                 let attack_count = self.get_enemy().get_entity().get_attacks().len();
                 if self.get_enemy().get_entity().is_alive() && attack_count > 0 {
                     let attack = rand::gen_range(0, attack_count);
-                    self.0
+                    self.enemy
                         .get_entity_mut()
                         .use_attack(attack, player.get_entity_mut());
                 } else {

@@ -1,4 +1,4 @@
-use crate::entity::Entity;
+use crate::entity::{Attack, Entity, player::Player};
 use macroquad::prelude::*;
 use std::iter::Iterator;
 
@@ -20,7 +20,11 @@ pub fn draw_lifebar(offset: &mut Vec2, entity: &Entity) {
     draw_p(&mut pos, entity.get_name());
 
     let health = entity.get_hp();
-    draw_p(&mut pos, &format!("hp: {}/{}", health.0, health.1));
+    let mana = entity.get_mp();
+    draw_p(
+        &mut pos,
+        &format!("hp: {}/{}, mp: {}/{}", health.0, health.1, mana.0, mana.1),
+    );
 
     draw_shadowbox_ex(
         Rect::new(
@@ -113,6 +117,51 @@ where
                 ..Default::default()
             },
         );
+    }
+}
+
+pub fn draw_attacks<'a>(pos: &mut Vec2, player: &Player, items: impl Iterator<Item = &'a Attack>) {
+    for (index, item) in items.enumerate() {
+        draw_text(&format!("{}. ", index + 1), pos.x - 10., pos.y, 22., BLACK);
+        draw_p_ex(
+            pos,
+            item.get_description(),
+            DrawParagraphParams {
+                split_line: true,
+                margin: Rect::new(20.0, 0., 0., 20.),
+                ..Default::default()
+            },
+        );
+        let mut x = pos.x + 25.;
+        if item.get_damage(player.get_entity()) > 0 {
+            draw_text(
+                &format!("damage: {}", item.get_damage(player.get_entity())),
+                x,
+                pos.y - 20.,
+                22.,
+                RED,
+            );
+            x += 150.
+        }
+        if item.get_heal(player.get_entity()) > 0 {
+            draw_text(
+                &format!("heal: {}", item.get_heal(player.get_entity())),
+                x,
+                pos.y - 20.,
+                22.,
+                GREEN,
+            );
+            x += 150.
+        }
+        if item.get_required_mana() > 0 {
+            draw_text(
+                &format!("mana: {}", item.get_required_mana()),
+                x,
+                pos.y - 20.,
+                22.,
+                BLUE,
+            );
+        }
     }
 }
 

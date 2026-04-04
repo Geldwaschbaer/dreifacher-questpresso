@@ -69,6 +69,10 @@ impl Entity {
         (self.hit_points, self.constitution * 5)
     }
 
+    pub fn get_mp(&self) -> (i32, i32) {
+        (self.mana, self.intelligence * 3)
+    }
+
     pub fn is_alive(&self) -> bool {
         self.hit_points > 0
     }
@@ -123,11 +127,23 @@ pub struct Attack {
 
 impl Attack {
     pub fn get_damage(&self, user: &Entity) -> i32 {
-        self.base_damage + self.scales_with.get_bonus(user)
+        if self.base_damage > 0 {
+            self.base_damage + self.scales_with.get_bonus(user)
+        } else {
+            0
+        }
     }
 
     pub fn get_heal(&self, user: &Entity) -> i32 {
-        self.base_heal + self.scales_with.get_bonus(user)
+        if self.base_heal > 0 {
+            self.base_heal + self.scales_with.get_bonus(user)
+        } else {
+            0
+        }
+    }
+
+    pub fn get_required_mana(&self) -> i32 {
+        self.required_mana
     }
 
     pub fn get_description(&self) -> &str {
