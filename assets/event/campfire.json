@@ -7,12 +7,12 @@
         "description": "You can choose to either rest or upgrade your stats.",
         "options": [
           {
-            "description": "Rest – Fully restore your health and mana.",
+            "description": "Rest -- Fully restore your health and mana.",
             "events": [],
             "next": 1
           },
           {
-            "description": "Upgrade Stats – Choose and upgrade 2 stats by one level.",
+            "description": "Upgrade Stats -- Choose and upgrade 2 stats by one level.",
             "events": [],
             "next": 2
           }
