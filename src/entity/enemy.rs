@@ -4,7 +4,7 @@ use serde::Deserialize;
 #[derive(Clone, Deserialize)]
 pub struct Enemy {
     entity: Entity,
-    on_death: Box<Event>,
+    on_death: Vec<Event>,
 }
 
 impl Enemy {
@@ -16,7 +16,7 @@ impl Enemy {
         &mut self.entity
     }
 
-    pub fn get_on_death(&self) -> &Event {
+    pub fn get_on_death(&self) -> &Vec<Event> {
         &self.on_death
     }
 }

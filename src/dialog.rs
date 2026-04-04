@@ -47,16 +47,16 @@ impl DialogBox {
 #[derive(Deserialize, Clone)]
 pub struct DialogOption {
     description: String,
-    #[serde(default = "Event::nothing")]
-    event: Event,
+    #[serde(default = "Vec::new")]
+    events: Vec<Event>,
     next: usize,
 }
 
 impl DialogOption {
-    pub fn new(description: String, event: Event, next: usize) -> DialogOption {
+    pub fn new(description: String, events: Vec<Event>, next: usize) -> DialogOption {
         DialogOption {
             description,
-            event,
+            events,
             next,
         }
     }
@@ -65,8 +65,8 @@ impl DialogOption {
         &self.description
     }
 
-    pub fn get_event(&self) -> &Event {
-        &self.event
+    pub fn get_events(&self) -> &Vec<Event> {
+        &self.events
     }
 
     pub fn get_next(&self) -> usize {

@@ -146,7 +146,7 @@ impl AsyncFrom<RoomLayout> for Room {
                 serde_json::from_str(&serialized)
                     .expect(&format!("could not parse event from file '{}'", file))
             } else {
-                Event::Nothing
+                Event::ReturnToMap
             }
         };
         Room {

@@ -22,50 +22,54 @@
         }
       ]
     },
-    "on_death": {
-      "type": "OpenDialog",
-      "data": {
-        "title": "Choose your Loot!",
-        "dialogs": [
-          {
-            "description": "The zombies dropped bad loot.",
-            "options": [
-              {
-                "description": "Learn attack Zombie-Punch!",
-                "event": {
-                  "type": "LearnAttack",
-                  "data": {
-                    "description": "Hit them with the Ultra-Strong Zombie-Punch (TM)",
-                    "damage": 100,
-                    "heal": 0,
-                    "area_of_effect": false
-                  }
+    "on_death": [
+      {
+        "type": "OpenDialog",
+        "data": {
+          "title": "Choose your Loot!",
+          "dialogs": [
+            {
+              "description": "The zombies dropped bad loot.",
+              "options": [
+                {
+                  "description": "Learn attack Zombie-Punch!",
+                  "events": [
+                    {
+                      "type": "LearnAttack",
+                      "data": {
+                        "description": "Hit them with the Ultra-Strong Zombie-Punch (TM)",
+                        "damage": 100,
+                        "heal": 0,
+                        "area_of_effect": false
+                      }
+                    }
+                  ],
+                  "next": 1
                 },
-                "next": 1
-              },
-              {
-                "description": "Upgrade a random Stat!",
-                "event": {
-                  "type": "Nothing"
-                },
-                "next": 1
-              }
-            ]
-          },
-          {
-            "description": "The loot was added to your inventory.",
-            "options": [
-              {
-                "description": "ok.",
-                "event": {
-                  "type": "ReturnToMap"
-                },
-                "next": 1
-              }
-            ]
-          }
-        ]
+                {
+                  "description": "Upgrade a random Stat!",
+                  "events": [],
+                  "next": 1
+                }
+              ]
+            },
+            {
+              "description": "The loot was added to your inventory.",
+              "options": [
+                {
+                  "description": "ok.",
+                  "events": [
+                    {
+                      "type": "ReturnToMap"
+                    }
+                  ],
+                  "next": 1
+                }
+              ]
+            }
+          ]
+        }
       }
-    }
+    ]
   }
 }

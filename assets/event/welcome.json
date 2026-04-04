@@ -8,16 +8,16 @@
         "options": [
           {
             "description": "Already know everything",
-            "event": {
-              "type": "ReturnToMap"
-            },
+            "events": [
+              {
+                "type": "ReturnToMap"
+              }
+            ],
             "next": 0
           },
           {
             "description": "Tell me more.",
-            "event": {
-              "type": "Nothing"
-            },
+            "events": [],
             "next": 1
           }
         ]
@@ -27,16 +27,20 @@
         "options": [
           {
             "description": "Thanks, that was really helpful!",
-            "event": {
-              "type": "ReturnToMap"
-            },
+            "events": [
+              {
+                "type": "ReturnToMap"
+              }
+            ],
             "next": 1
           },
           {
-            "description": "That was ... \n not really helpful? But better then nothing!",
-            "event": {
-              "type": "ReturnToMap"
-            },
+            "description": "That was ... \nnot really helpful? But better then nothing!",
+            "event": [
+              {
+                "type": "ReturnToMap"
+              }
+            ],
             "next": 1
           }
         ]

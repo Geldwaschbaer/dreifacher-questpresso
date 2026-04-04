@@ -23,8 +23,10 @@
         }
       ]
     },
-    "on_death": {
-      "type": "ReturnToMap"
-    }
+    "on_death": [
+      {
+        "type": "ReturnToMap"
+      }
+    ]
   }
 }

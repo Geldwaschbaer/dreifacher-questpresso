@@ -22,17 +22,19 @@
         }
       ]
     },
-    "on_death": {
-      "type": "OpenDialog",
-      "data": {
-        "title": "You slayed the dragon!",
-        "dialogs": [
-          {
-            "description": "Slaying dragons is really bad for nature!\nThey are a species on the brink of extinction.\nThey keep the ecosystem in balance. How could you possibly kill them?\nCelebrate your victory, asshole! Please, leave us alone.\n\n(You can quit by presing ESC/Q)",
-            "options": []
-          }
-        ]
+    "on_death": [
+      {
+        "type": "OpenDialog",
+        "data": {
+          "title": "You slayed the dragon!",
+          "dialogs": [
+            {
+              "description": "Slaying dragons is really bad for nature!\nThey are a species on the brink of extinction.\nThey keep the ecosystem in balance. How could you possibly kill them?\nCelebrate your victory, asshole! Please, leave us alone.\n\n(You can quit by presing ESC/Q)",
+              "options": []
+            }
+          ]
+        }
       }
-    }
+    ]
   }
 }

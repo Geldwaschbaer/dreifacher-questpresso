@@ -8,8 +8,6 @@ use serde::Deserialize;
 #[derive(Deserialize, Clone)]
 #[serde(tag = "type", content = "data")]
 pub enum Event {
-    // nothing happens when this event is triggered
-    Nothing,
     // return back to the global map
     ReturnToMap,
     // opens a new dialog
@@ -23,13 +21,8 @@ pub enum Event {
 }
 
 impl Event {
-    pub fn nothing() -> Event {
-        Event::Nothing
-    }
-
     pub fn trigger(&self, player: &mut Player) -> SceneTransition {
         match self {
-            Event::Nothing => SceneTransition::None,
             Event::ReturnToMap => SceneTransition::Pop,
             Event::OpenDialog(dialog) => {
                 player.set_dialog_position(0);

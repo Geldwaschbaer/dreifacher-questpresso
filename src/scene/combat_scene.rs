@@ -77,7 +77,7 @@ impl Scene for CombatScene {
                         .get_entity_mut()
                         .use_attack(attack, player.get_entity_mut());
                 } else {
-                    return self.0.get_on_death().trigger(player);
+                    return player.resolve_all(self.get_enemy().get_on_death());
                 }
                 if player.get_entity().get_health().get_cur_health() <= 0 {
                     return SceneTransition::Push(Box::new(GameOverScene::new(format!(

@@ -57,7 +57,7 @@ impl Scene for DialogScene {
         for (index, dialog_option) in dialog_box.get_options().iter().enumerate() {
             if is_key_down(KEY_CODES[index]) && self.cooldown == 0. {
                 player.set_dialog_position(dialog_option.get_next());
-                let transition = dialog_option.get_event().trigger(player);
+                let transition = player.resolve_all(dialog_option.get_events());
                 self.cooldown += 0.5;
                 return transition;
             }

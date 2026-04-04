@@ -1,4 +1,8 @@
-use crate::entity::{Attack, Entity, Health};
+use crate::{
+    entity::{Attack, Entity, Health},
+    event::Event,
+    scene::SceneTransition,
+};
 
 pub struct Player {
     map_position: usize,
@@ -23,7 +27,15 @@ impl Player {
         }
     }
 
-    pub fn enter_room(&mut self, room: usize) {
+    pub fn resolve_all(&mut self, events: &Vec<Event>) -> SceneTransition {
+        let mut transition = SceneTransition::None;
+        for event in events {
+            transition = event.trigger(self);
+        }
+        return transition;
+    }
+
+    pub fn set_map_position(&mut self, room: usize) {
         self.map_position = room;
     }
 

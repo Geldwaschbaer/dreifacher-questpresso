@@ -63,7 +63,7 @@ impl Scene for MapScene {
                 let dx = neig.get_position().x * screen_width() - x;
                 let dy = neig.get_position().y * screen_height() - y;
                 if (dx * dx + dy * dy).sqrt() < 14.0 {
-                    player.enter_room(target);
+                    player.set_map_position(target);
                     self.0
                         .get_rooms_mut()
                         .get_mut(target)
