@@ -93,7 +93,7 @@
                 "type": "LearnAttack",
                 "data": {
                   "description": "Fast Slash",
-                  "base_damage": 2,
+                  "base_damage": 3,
                   "base_heal": 0,
                   "required_mana": 0,
                   "scales_with": "Dex"
@@ -103,10 +103,48 @@
                 "type": "LearnAttack",
                 "data": {
                   "description": "Holy Strike",
-                  "base_damage": 4,
+                  "base_damage": 6,
                   "base_heal": 0,
                   "required_mana": 1,
                   "scales_with": "Str"
+                }
+              }
+            ],
+            "next": 3
+          },
+          {
+            "description": "Cleric",
+            "events": [
+              {
+                "type": "UpgradeStat",
+                "data": ["Con", 3]
+              },
+              {
+                "type": "UpgradeStat",
+                "data": ["Dex", 1]
+              },
+              {
+                "type": "UpgradeStat",
+                "data": ["Int", 2]
+              },
+              {
+                "type": "LearnAttack",
+                "data": {
+                  "description": "Throw Enchanted",
+                  "base_damage": 3,
+                  "base_heal": 1,
+                  "required_mana": 0,
+                  "scales_with": "Dex"
+                }
+              },
+              {
+                "type": "LearnAttack",
+                "data": {
+                  "description": "Self-Heal",
+                  "base_damage": 0,
+                  "base_heal": 5,
+                  "required_mana": 2,
+                  "scales_with": "Int"
                 }
               }
             ],
@@ -118,7 +156,7 @@
         "description": "All stats and skills were upgraded.",
         "options": [
           {
-            "description": "Already know everything",
+            "description": "I am ready!",
             "events": [
               {
                 "type": "ReturnToMap"
