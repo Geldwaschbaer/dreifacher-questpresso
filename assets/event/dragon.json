@@ -21,7 +21,7 @@
           "area_of_effect": false
         }
       ],
-      "texture": "assets/entity/dravhe?.png"
+      "texture": "assets/entity/dragon.png"
     },
     "on_death": [
       {
