@@ -3,7 +3,7 @@
     "position": [0.5, 0.8],
     "neighbours": [1, 2],
     "event_options": ["assets/event/welcome.json"],
-    "texture": "assets/icon/mystery.png"
+    "texture": "assets/icon/start.png"
   },
   {
     "position": [0.3, 0.6],
