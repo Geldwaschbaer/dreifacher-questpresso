@@ -9,12 +9,22 @@
         "options": [
           {
             "description": "TAKE their POTIONS -- RESTORE your HEALTH",
-            "events": [],
+            "events": [
+              {
+                "type": "RestoreHp",
+                "data": 20
+              }
+            ],
             "next": 1
           },
           {
             "description": "TAKE their DRUGS -- RESTORE your MANA.",
-            "events": [],
+            "events": [
+              {
+                "type": "RestoreMp",
+                "data": 20
+              }
+            ],
             "next": 1
           },
           {
@@ -32,6 +42,7 @@
             "events": [
               {
                 "type": "ReturnToMap"
+
               }
             ],
             "next": 1
