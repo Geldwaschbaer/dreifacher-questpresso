@@ -7,6 +7,7 @@ use macroquad::prelude::*;
 
 pub struct CombatScene {
     enemy: Enemy,
+    combat_summary: String,
     cooldown: f32,
 }
 
@@ -14,6 +15,7 @@ impl CombatScene {
     pub fn new(enemy: Enemy) -> CombatScene {
         CombatScene {
             enemy,
+            combat_summary: "".into(),
             cooldown: 0.0,
         }
     }
@@ -72,6 +74,7 @@ impl CombatScene {
                 self.get_enemy().get_entity().get_name()
             ),
         );
+        draw_p(&mut pos, &self.combat_summary);
         draw_attacks(&mut pos, player);
     }
 
@@ -108,6 +111,14 @@ impl CombatScene {
                     self.get_enemy_mut()
                         .get_entity_mut()
                         .use_attack(attack, player.get_entity_mut());
+                    let combat_summary = self
+                        .get_enemy()
+                        .get_entity()
+                        .get_attacks()
+                        .get(attack)
+                        .expect("expected attack exists")
+                        .get_description();
+                    self.combat_summary = combat_summary.to_string();
                 }
             }
             self.cooldown = 0.5;

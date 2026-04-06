@@ -4,19 +4,19 @@
     "entity": {
       "name": "Great White Shark",
       "dexterity": 1,
-      "intelligence": 3,
+      "intelligence": 2,
       "strength": 3,
       "constitution": 6,
       "attacks": [
         {
-          "description": "Shark-Bite",
+          "description": "A Shark-Bite? That really hurt. You just lost 6 hp!",
           "base_damage": 3,
           "base_heal": 0,
           "required_mana": 0,
           "scales_with": "Str"
         },
         {
-          "description": "Water Fin",
+          "description": "The Water Fin special attack (TM) from a Great White Shark is\nsomething you won't see every day. This dealt 8 damage to you!",
           "base_damage": 5,
           "base_heal": 0,
           "required_mana": 3,
