@@ -30,7 +30,7 @@
         "type": "OpenDialog",
         "data": {
           "title": "Choose your Loot!",
-          "texture": "assets/dialog/labyrinth.png",
+          "texture": "assets/dialog/shoppe.png",
           "dialogs": [
             {
               "description": "Choose witch stat you want to upgrade.",
