@@ -7,41 +7,41 @@
       {
         "description": "It's time to go on an epic quest to slay the EVIL DRAGON that lurks in the depths of this DUNGEON\n",
         "options": [
-            {
-                "description": "OK",
-                "events": [],
-                "next": 1
-            },
-            {
-                "description": "I Already know everything",
-                "events": [],
-                "next": 3
-            }
+          {
+            "description": "OK",
+            "events": [],
+            "next": 1
+          },
+          {
+            "description": "I Already know everything",
+            "events": [],
+            "next": 3
+          }
         ]
       },
       {
         "description": "Unfortunately the 'brave' KNIGHT that was assigned to go on this quest tripped over a CAT and fell off a cliff...\nSo now Donut, the totally UNRELATED CAT, has to take up the cumbersome chore that the INCOMPETENT KNIGHT left behind.\n",
         "options": [
-            {
-                "description": "OK",
-                "events": [],
-                "next": 3
-            },
-            {
-                "description": "Did Donut kill a guy?!",
-                "events": [],
-                "next": 2
-            }
+          {
+            "description": "OK",
+            "events": [],
+            "next": 3
+          },
+          {
+            "description": "Did Donut kill a guy?!",
+            "events": [],
+            "next": 2
+          }
         ]
       },
       {
         "description": "NO WAY!! He would never do such a thing!\nDonut is a very WELL MANNERED feline! Shame on You for assuming such a horrible thing!!!\n",
         "options": [
-            {
-                "description": "Sure...",
-                "events": [],
-                "next": 3
-            }
+          {
+            "description": "Sure...",
+            "events": [],
+            "next": 3
+          }
         ]
       },
       {
