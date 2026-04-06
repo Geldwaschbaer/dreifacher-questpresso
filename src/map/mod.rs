@@ -18,7 +18,7 @@ pub struct Map {
 impl Map {
     pub async fn new() -> Map {
         let builder = {
-            let layouts = ["assets/layout/level-2.json"];
+            let layouts = ["assets/layout/level-1.json"];
             let serialized = load_string(layouts[rand::gen_range(0, layouts.len())])
                 .await
                 .expect("file exists");

@@ -19,8 +19,7 @@
     "neighbours": [4],
     "event_options": [
             "assets/event/enemy1.json",
-            "assets/event/enemy2.json",
-            "assets/event/enemy3.json"
+            "assets/event/enemy2.json"
     ],
     "icon": "Enemy"
   },
@@ -31,7 +30,6 @@
     "event_options": [
             "assets/event/enemy1.json",
             "assets/event/enemy2.json",
-            "assets/event/enemy3.json",
             "assets/event/campfire.json"
     ],
     "icon": "Mystery"
@@ -40,7 +38,10 @@
     "num": 4,
     "position": [0.5, 0.5],
     "neighbours": [5, 6],
-    "event_options": ["assets/event/campfire.json"],
+    "event_options": [
+            "assets/event/campfire.json",
+            "assets/event/shop.json",
+            "assets/event/money.json"],
     "icon": "Mystery"
   },
   {
@@ -51,6 +52,8 @@
             "assets/event/enemy1.json",
             "assets/event/enemy2.json",
             "assets/event/enemy3.json",
+            "assets/event/money.json",
+            "assets/event/shop.json",
             "assets/event/campfire.json"
     ],
     "icon": "Mystery"
@@ -81,70 +84,117 @@
     "num": 8,
     "position": [0.3, 0.65],
     "neighbours": [9, 10],
-    "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json"
+    ],
     "icon": "Enemy"
   },
   {
     "num": 9,
     "position": [0.5, 0.8],
     "neighbours": [10, 12],
-    "event_options": ["assets/event/campfire.json"],
+    "event_options": ["assets/event/shop.json"],
     "icon": "Shop"
   },
   {
     "num": 10,
     "position": [0.4, 0.85],
     "neighbours": [16],
-    "event_options": ["assets/event/campfire.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json"
+    ],
     "icon": "Enemy"
   },
   {
     "num": 11,
     "position": [0.75, 0.7],
     "neighbours": [12, 14],
-    "event_options": ["assets/event/campfire.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json"
+    ],
     "icon": "Enemy"
   },
   {
     "num": 12,
     "position": [0.6, 0.9],
     "neighbours": [13],
-    "event_options": ["assets/event/campfire.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json",
+            "assets/event/money.json",
+            "assets/event/shop.json",
+            "assets/event/campfire.json"
+],
     "icon": "Mystery"
   },
   {
     "num": 13,
     "position": [0.5, 1.0],
     "neighbours": [18],
-    "event_options": ["assets/event/campfire.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json",
+            "assets/event/money.json",
+            "assets/event/shop.json",
+            "assets/event/campfire.json"
+],
     "icon": "Mystery"
   },
   {
     "num": 14,
     "position": [0.7, 0.95],
     "neighbours": [15, 18],
-    "event_options": ["assets/event/campfire.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json",
+            "assets/event/money.json",
+            "assets/event/shop.json",
+            "assets/event/campfire.json"
+    ],
     "icon": "Mystery"
   },
   {
     "num": 15,
     "position": [0.7, 1.15],
     "neighbours": [18],
-    "event_options": ["assets/event/campfire.json"],
+    "event_options": ["assets/event/shop.json"],
     "icon": "Shop"
   },
   {
     "num": 16,
     "position": [0.4, 1.0],
     "neighbours": [17, 18],
-    "event_options": ["assets/event/campfire.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json",
+            "assets/event/money.json",
+            "assets/event/shop.json",
+            "assets/event/campfire.json"
+    ],
     "icon": "Mystery"
   },
   {
     "num": 17,
     "position": [0.3, 1.1],
     "neighbours": [18],
-    "event_options": ["assets/event/campfire.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json",
+            "assets/event/money.json",
+            "assets/event/shop.json",
+            "assets/event/campfire.json"
+    ],
     "icon": "Mystery"
   },
   {
