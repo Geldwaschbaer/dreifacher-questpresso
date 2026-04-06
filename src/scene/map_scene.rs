@@ -193,7 +193,7 @@ impl MapScene {
             if let Some(position) = self.last_pos {
                 // Just ignore horizontal movement for now.
                 let dy = y - position.y;
-                self.camera_pos.y += dy;
+                self.camera_pos.y -= dy;
             }
         }
         self.last_pos = Some(Vec2 { x, y });
