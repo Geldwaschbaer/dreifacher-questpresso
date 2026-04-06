@@ -42,7 +42,6 @@
             "events": [
               {
                 "type": "ReturnToMap"
-
               }
             ],
             "next": 1
@@ -58,6 +57,9 @@
               {
                 "type": "UpgradeStat",
                 "data": ["Str", 1]
+              },
+              {
+                "type": "ReturnToMap"
               }
             ],
             "next": 2
