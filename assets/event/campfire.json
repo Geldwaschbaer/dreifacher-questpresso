@@ -42,10 +42,10 @@
         ]
       },
       {
-        "description": "Choose witch stat you want to upgrade. (1/2)",
+        "description": "What are you still missing to become the most fearsome Donut that has ever existed? (1/2)",
         "options": [
           {
-            "description": "Upgrade Strenght",
+            "description": "Become STRONGER!",
             "events": [
               {
                 "type": "UpgradeStat",
@@ -55,7 +55,7 @@
             "next": 3
           },
           {
-            "description": "Upgrade Dexterity",
+            "description": "Become FASTER!",
             "events": [
               {
                 "type": "UpgradeStat",
@@ -65,7 +65,7 @@
             "next": 3
           },
           {
-            "description": "Upgrade Constitution",
+            "description": "Experience HEALTH",
             "events": [
               {
                 "type": "UpgradeStat",
@@ -75,7 +75,7 @@
             "next": 3
           },
           {
-            "description": "Upgrade Intelligence",
+            "description": "Gain a BRAIN CELL",
             "events": [
               {
                 "type": "UpgradeStat",
@@ -85,7 +85,7 @@
             "next": 3
           },
           {
-            "description": "Cancel",
+            "description": "What are you still missing to become the most fearsome Donut that has ever existed? (2/2)",
             "events": [],
             "next": 0
           }
@@ -95,37 +95,37 @@
         "description": "Choose witch stat you want to upgrade. (2/2)",
         "options": [
           {
-            "description": "Upgrade Strenght",
+            "description": "Become STRONGER!",
             "events": [
               {
                 "type": "UpgradeStat",
                 "data": ["Str", 1]
               }
             ],
-            "next": 4
+            "next": 3
           },
           {
-            "description": "Upgrade Dexterity",
+            "description": "Become FASTER!",
             "events": [
               {
                 "type": "UpgradeStat",
                 "data": ["Dex", 1]
               }
             ],
-            "next": 4
+            "next": 3
           },
           {
-            "description": "Upgrade Constitution",
+            "description": "Experience HEALTH",
             "events": [
               {
                 "type": "UpgradeStat",
                 "data": ["Con", 1]
               }
             ],
-            "next": 4
+            "next": 3
           },
           {
-            "description": "Upgrade Intelligence",
+            "description": "Gain a BRAIN CELL",
             "events": [
               {
                 "type": "UpgradeStat",
@@ -137,10 +137,28 @@
         ]
       },
       {
-        "description": "Your stats were sucessfully upgraded!",
+        "description": "DONUT is now so much better. She will kill everyone now >:3",
         "options": [
           {
-            "description": "Thanks!",
+            "description": "This information made me HAPPY.",
+            "events": [
+              {
+                "type": "ReturnToMap"
+              }
+            ],
+            "next": 4
+          },
+          {
+            "description": "This information saved my CHILDREN from a BURNING HOUSE.",
+            "events": [
+              {
+                "type": "ReturnToMap"
+              }
+            ],
+            "next": 4
+          },
+          {
+            "description": "miaouw ^w^",
             "events": [
               {
                 "type": "ReturnToMap"
