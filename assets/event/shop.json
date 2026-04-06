@@ -1,0 +1,58 @@
+{
+  "type": "OpenDialog",
+  "data": {
+    "title": "It's SHOPLIFTING TIME!",
+    "texture": "assets/dialog/shoppe.png",
+    "dialogs": [
+      {
+        "description": "Deep in the DARKEST DEPTHS of this DUNGEON you find a fellow feline. But as you approach, you notice that this HORRIBLE 'cat' has decided to EMBRACE CAPITALISM. Now it is trying (AND FAILING!) to sell you its CRAP!",
+        "options": [
+          {
+            "description": "TAKE their POTIONS -- RESTORE your HEALTH",
+            "events": [],
+            "next": 1
+          },
+          {
+            "description": "TAKE their DRUGS -- RESTORE your MANA.",
+            "events": [],
+            "next": 1
+          },
+          {
+            "description": "TAKE their EYES -- WHY would you do THIS?",
+            "events": [],
+            "next": 2
+          }
+        ]
+      },
+      {
+        "description": "You stole some SHIT! This cat is kind of BASED!",
+        "options": [
+          {
+            "description": "miaow >:3",
+            "events": [
+              {
+                "type": "ReturnToMap"
+              }
+            ],
+            "next": 1
+          }
+        ]
+      },
+      {
+        "description": "Donut begins to RIP OUT the EYES of the EVIL CAT, the SCREAMS can be heard ECHOING through the DUNGEON. You are a MONSTER",
+        "options": [
+          {
+            "description": "RAWR >:3",
+            "events": [
+              {
+                "type": "UpgradeStat",
+                "data": ["Str", 1]
+              }
+            ],
+            "next": 2
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,29 +1,29 @@
 {
   "type": "OpenDialog",
   "data": {
-    "title": "You found a Campfire",
+    "title": "You found a CAMPFIRE",
     "texture": "assets/dialog/campfire.png",
     "dialogs": [
       {
-        "description": "You can choose to either rest or upgrade your stats.",
+        "description": "As you walk on a LONELY ROAD (the only one that you have ever known) you happen upon a cozy CAMPFIRE",
         "options": [
           {
-            "description": "Rest -- Fully restore your health and mana.",
+            "description": "Embrace EEPY -- Fully restore your HEALTH and MANA.",
             "events": [],
             "next": 1
           },
           {
-            "description": "Upgrade Stats -- Choose and upgrade 2 stats by one level.",
+            "description": "Deny EEPY -- UPGRADE 2 stats by one level.",
             "events": [],
             "next": 2
           }
         ]
       },
       {
-        "description": "You have rested well!",
+        "description": "You have rested WELL!",
         "options": [
           {
-            "description": "Thanks!",
+            "description": "miaow",
             "events": [
               {
                 "type": "RestoreHp",

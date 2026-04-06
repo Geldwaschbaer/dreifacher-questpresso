@@ -15,9 +15,8 @@
                 "data": {
                   "description": "Make it RAIN",
                   "base_damage": 3,
-                  "required_mana": 1,
                   "scales_with": "Con",
-                  "applied_buffs": [{ "type": "Vulnerability"}]
+                  "applied_buffs": [{ "type": "Vulnerable"}]
                 }
               }
             ],
