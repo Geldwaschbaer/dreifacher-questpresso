@@ -66,7 +66,7 @@ impl CombatScene {
                 self.get_enemy().get_entity().get_name()
             ),
         );
-        draw_attacks(&mut pos, player, player.get_entity().get_attacks().iter());
+        draw_attacks(&mut pos, player);
     }
 
     fn update_battle(&mut self, player: &mut Player) -> SceneTransition {

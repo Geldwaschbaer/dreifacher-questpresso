@@ -1,4 +1,4 @@
-use crate::entity::{Entity, attack::Attack, player::Player};
+use crate::entity::{Entity, player::Player};
 use macroquad::prelude::*;
 use std::iter::Iterator;
 
@@ -129,8 +129,8 @@ where
     }
 }
 
-pub fn draw_attacks<'a>(pos: &mut Vec2, player: &Player, items: impl Iterator<Item = &'a Attack>) {
-    for (index, item) in items.enumerate() {
+pub fn draw_attacks<'a>(pos: &mut Vec2, player: &Player) {
+    for (index, item) in player.get_entity().get_attacks().iter().enumerate() {
         draw_text(
             &format!("{}. ", index + 1),
             pos.x - 10.,
