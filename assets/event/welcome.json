@@ -65,7 +65,7 @@
                   "base_damage": 3,
                   "required_mana": 1,
                   "scales_with": "Int",
-                  "applied_buffs": [{ "type": "Burn", "data": 3 }]
+                  "apply_buffs": [{ "type": "Burn", "data": 3 }]
                 }
               },
               {
