@@ -1,12 +1,14 @@
-mod buff;
+pub mod attack;
+pub mod buff;
 pub mod enemy;
 pub mod player;
+pub mod stat;
 
 use async_from::{AsyncFrom, async_trait};
 use macroquad::texture::{Texture2D, load_texture};
 use serde::Deserialize;
 
-use crate::entity::buff::Buff;
+use crate::entity::{attack::Attack, buff::Buff, stat::Stat};
 
 #[derive(Clone)]
 pub struct Entity {
@@ -40,11 +42,11 @@ impl Entity {
 
     pub fn use_attack(&mut self, attack: usize, target: &mut Entity) {
         let attack = self.attacks.get(attack).expect("expected attack exists");
-        if self.mana >= attack.required_mana {
-            for buff in &attack.apply_buffs {
+        if self.mana >= attack.get_required_mana() {
+            for buff in attack.get_applied_buffs() {
                 target.buffs.push(buff.clone())
             }
-            for buff in &attack.receive_buffs {
+            for buff in attack.get_received_buffs() {
                 self.buffs.push(buff.clone())
             }
             let mut damage = attack.get_damage(self);
@@ -58,7 +60,7 @@ impl Entity {
             }
             target.hit_points = (target.hit_points - damage).max(0);
             self.hit_points = (self.hit_points + heal).min(self.constitution * 5);
-            self.mana -= attack.required_mana;
+            self.mana -= attack.get_required_mana();
         }
     }
 
@@ -150,54 +152,4 @@ impl AsyncFrom<EntityBuilder> for Entity {
             texture,
         }
     }
-}
-
-#[derive(Clone, Deserialize)]
-pub struct Attack {
-    description: String,
-    #[serde(default = "Default::default")]
-    base_damage: i32,
-    #[serde(default = "Default::default")]
-    base_heal: i32,
-    #[serde(default = "Default::default")]
-    required_mana: i32,
-    scales_with: Stat,
-    #[serde(default = "Default::default")]
-    apply_buffs: Vec<Buff>,
-    #[serde(default = "Default::default")]
-    receive_buffs: Vec<Buff>,
-}
-
-impl Attack {
-    pub fn get_damage(&self, user: &Entity) -> i32 {
-        if self.base_damage > 0 {
-            self.base_damage + user.get_stat(&self.scales_with)
-        } else {
-            0
-        }
-    }
-
-    pub fn get_heal(&self, user: &Entity) -> i32 {
-        if self.base_heal > 0 {
-            self.base_heal + user.get_stat(&self.scales_with)
-        } else {
-            0
-        }
-    }
-
-    pub fn get_required_mana(&self) -> i32 {
-        self.required_mana
-    }
-
-    pub fn get_description(&self) -> &str {
-        &self.description
-    }
-}
-
-#[derive(Clone, Deserialize)]
-pub enum Stat {
-    Str,
-    Dex,
-    Con,
-    Int,
 }

@@ -1,4 +1,4 @@
-use crate::entity::{Attack, Entity, player::Player};
+use crate::entity::{Entity, attack::Attack, player::Player};
 use macroquad::prelude::*;
 use std::iter::Iterator;
 

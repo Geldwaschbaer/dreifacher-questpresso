@@ -1,9 +1,10 @@
 use crate::{
     dialog::{Dialog, DialogBuilder},
     entity::{
-        Attack, Stat,
+        attack::Attack,
         enemy::{Enemy, EnemyBuilder},
         player::Player,
+        stat::Stat,
     },
     scene::{SceneTransition, combat_scene::CombatScene, dialog_scene::DialogScene},
 };

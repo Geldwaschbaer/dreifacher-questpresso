@@ -1,6 +1,6 @@
 use crate::{
     draw::*,
-    entity::{Stat, player::Player},
+    entity::{player::Player, stat::Stat},
     map::{Map, MapIcon, MapNode},
     scene::{Scene, SceneTransition},
 };
