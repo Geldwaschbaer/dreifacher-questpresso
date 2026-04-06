@@ -23,7 +23,7 @@
         "type": "OpenDialog",
         "data": {
           "title": "Choose your Loot!",
-          "texture": "assets/dialog/shoppe.png",
+          "texture": "assets/dialog/battle_won.png",
           "dialogs": [
             {
               "description": "Choose witch stat you want to upgrade.",
