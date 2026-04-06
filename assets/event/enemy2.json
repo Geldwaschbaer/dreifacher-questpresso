@@ -26,10 +26,10 @@
           "texture": "assets/dialog/battle_won.png",
           "dialogs": [
             {
-              "description": "Choose witch stat you want to upgrade.",
+              "description": "What are you still missing to become the most fearsome Donut that has ever existed?",
               "options": [
                 {
-                  "description": "Upgrade Strenght",
+                  "description": "Become STRONGER!",
                   "events": [
                     {
                       "type": "UpgradeStat",
@@ -39,7 +39,7 @@
                   "next": 1
                 },
                 {
-                  "description": "Upgrade Dexterity",
+                  "description": "Become FASTER!",
                   "events": [
                     {
                       "type": "UpgradeStat",
@@ -49,7 +49,7 @@
                   "next": 1
                 },
                 {
-                  "description": "Upgrade Constitution",
+                  "description": "Experience HEALTH",
                   "events": [
                     {
                       "type": "UpgradeStat",
@@ -59,7 +59,7 @@
                   "next": 1
                 },
                 {
-                  "description": "Upgrade Intelligence",
+                  "description": "Gain a BRAIN CELL",
                   "events": [
                     {
                       "type": "UpgradeStat",
@@ -71,10 +71,10 @@
               ]
             },
             {
-              "description": "The loot was added to your inventory.",
+              "description": "Wow you're so much better now! You won't feel it at all, but trust me the old you really fell off.",
               "options": [
                 {
-                  "description": "ok.",
+                  "description": "OK :3",
                   "events": [
                     {
                       "type": "ReturnToMap"

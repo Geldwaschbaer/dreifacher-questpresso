@@ -2,7 +2,7 @@
   "type": "EnterCombat",
   "data": {
     "entity": {
-      "name": "Dragon",
+      "name": "EVIL DRAGON >:3",
       "dexterity": 3,
       "intelligence": 6,
       "strength": 5,
@@ -22,11 +22,11 @@
       {
         "type": "OpenDialog",
         "data": {
-          "title": "You slayed the dragon!",
+          "title": "Horrible Donut MURDER",
           "texture": "assets/dialog/dragon.png",
           "dialogs": [
             {
-              "description": "Slaying dragons is really bad for nature!\nThey are a species on the brink of extinction.\nThey keep the ecosystem in balance. How could you possibly kill them?\nCelebrate your victory, asshole! Please, leave us alone.\n\n(You can quit by presing ESC/Q)",
+              "description": "Donut absolutely SLAUGHTERED that poor animal.\nHOLY SHIT can someone call the POLICE this CAT neeeds to be ARRESTED!!!\nWHY would Donut just do something so BRUTAL?!\nHe looks so CUTE, there is NO WAY he could have done THIS! :exploding_head: :astonished:\n\n(wow you beat the game, you can end this misery with 'Q' or 'ESC')",
               "options": []
             }
           ]

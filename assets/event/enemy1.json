@@ -9,14 +9,14 @@
       "constitution": 2,
       "attacks": [
         {
-          "description": "The Snake bite you for 3 damage!",
+          "description": "The Snake bit you! You take 3 damage and start crying a little",
           "base_damage": 2,
           "base_heal": 0,
           "required_mana": 0,
           "scales_with": "Dex"
         },
         {
-          "description": "You got poised from the snake!",
+          "description": "You got poised from the snake! Your Death will be slow and very painful!",
           "base_damage": 1,
           "base_heal": 0,
           "required_mana": 1,
@@ -34,10 +34,10 @@
           "texture": "assets/dialog/battle_won.png",
           "dialogs": [
             {
-              "description": "Choose witch stat you want to upgrade.",
+              "description": "What are you still missing to become the most fearsome Donut that has ever existed?",
               "options": [
                 {
-                  "description": "Upgrade Strenght",
+                  "description": "Become STRONGER!",
                   "events": [
                     {
                       "type": "UpgradeStat",
@@ -47,7 +47,7 @@
                   "next": 1
                 },
                 {
-                  "description": "Upgrade Dexterity",
+                  "description": "Become FASTER!",
                   "events": [
                     {
                       "type": "UpgradeStat",
@@ -57,7 +57,7 @@
                   "next": 1
                 },
                 {
-                  "description": "Upgrade Constitution",
+                  "description": "Experience HEALTH",
                   "events": [
                     {
                       "type": "UpgradeStat",
@@ -67,7 +67,7 @@
                   "next": 1
                 },
                 {
-                  "description": "Upgrade Intelligence",
+                  "description": "Gain a BRAIN CELL",
                   "events": [
                     {
                       "type": "UpgradeStat",
@@ -79,10 +79,10 @@
               ]
             },
             {
-              "description": "The loot was added to your inventory.",
+              "description": "Wow you're so much better now! You won't feel it at all, but trust me the old you really fell off.",
               "options": [
                 {
-                  "description": "ok.",
+                  "description": "OK :3",
                   "events": [
                     {
                       "type": "ReturnToMap"
