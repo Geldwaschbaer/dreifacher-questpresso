@@ -5,7 +5,7 @@
     "texture": "assets/dialog/exit.png",
     "dialogs": [
       {
-                "description": "Donut decided that this whole adventuring stuff is not what he wants to spend his precious lifetime with.",
+                "description": "Donut decided that this whole adventuring stuff is not what she wants to spend her precious lifetime with.",
         "options": [
                     {
                         "description": "OK",
@@ -25,7 +25,7 @@
                 ]
         },
       {
-        "description": "You can now close the game. Donut is off to do better things with his life",
+        "description": "You can now close the game. Donut is off to do better things with her life",
         "options": [
           {
             "description": "But I want to continue playing! :(",
@@ -33,7 +33,7 @@
             "next": 3
           },
           {
-            "description": "Wow Donut is so cool I wish to achieve as much in Life as he has...",
+            "description": "Wow Donut is so cool I wish to achieve as much in Life as she has...",
             "events": [],
             "next": 4
           }
