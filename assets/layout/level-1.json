@@ -1,44 +1,143 @@
 [
   {
+    "num": 0,
     "position": [0.5, 0.2],
     "neighbours": [1, 2, 3],
     "event_options": ["assets/event/welcome.json"],
     "icon": "Start"
   },
   {
+    "num": 1,
     "position": [0.5, -0.2],
     "neighbours": [],
     "event_options": ["assets/event/exit.json"],
     "icon": "Exit"
   },
   {
+    "num": 2,
     "position": [0.3, 0.3],
     "neighbours": [4],
     "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
     "icon": "Enemy"
   },
   {
+    "num": 3,
     "position": [0.7, 0.3],
     "neighbours": [4],
     "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
     "icon": "Mystery"
   },
   {
+    "num": 4,
     "position": [0.5, 0.5],
     "neighbours": [5, 6],
     "event_options": ["assets/event/campfire.json"],
     "icon": "Mystery"
   },
   {
-    "position": [0.3, 0.6],
-    "neighbours": [],
+    "num": 5,
+    "position": [0.4, 0.55],
+    "neighbours": [7, 8],
     "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json", "assets/event/campfire.json"],
     "icon": "Mystery"
   },
   {
-    "position": [0.5, 0.6],
-    "neighbours": [],
+    "num": 6,
+    "position": [0.6, 0.6],
+    "neighbours": [9, 11],
     "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
     "icon": "Enemy"
+  },
+  {
+    "num": 7,
+    "position": [0.3, 0.5],
+    "neighbours": [8],
+    "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
+    "icon": "Enemy"
+  },
+  {
+    "num": 8,
+    "position": [0.3, 0.65],
+    "neighbours": [9, 10],
+    "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
+    "icon": "Enemy"
+  },
+  {
+    "num": 9,
+    "position": [0.5, 0.8],
+    "neighbours": [10, 12],
+    "event_options": ["assets/event/campfire.json"],
+    "icon": "Shop"
+  },
+  {
+    "num": 10,
+    "position": [0.4, 0.85],
+    "neighbours": [16],
+    "event_options": ["assets/event/campfire.json"],
+    "icon": "Enemy"
+  },
+  {
+    "num": 11,
+    "position": [0.75, 0.7],
+    "neighbours": [12, 14],
+    "event_options": ["assets/event/campfire.json"],
+    "icon": "Enemy"
+  },
+  {
+    "num": 12,
+    "position": [0.6, 0.9],
+    "neighbours": [13],
+    "event_options": ["assets/event/campfire.json"],
+    "icon": "Mystery"
+  },
+  {
+    "num": 13,
+    "position": [0.5, 1.0],
+    "neighbours": [18],
+    "event_options": ["assets/event/campfire.json"],
+    "icon": "Mystery"
+  },
+  {
+    "num": 14,
+    "position": [0.7, 0.95],
+    "neighbours": [15, 18],
+    "event_options": ["assets/event/campfire.json"],
+    "icon": "Mystery"
+  },
+  {
+    "num": 15,
+    "position": [0.7, 1.15],
+    "neighbours": [18],
+    "event_options": ["assets/event/campfire.json"],
+    "icon": "Shop"
+  },
+  {
+    "num": 16,
+    "position": [0.4, 1.0],
+    "neighbours": [17, 18],
+    "event_options": ["assets/event/campfire.json"],
+    "icon": "Mystery"
+  },
+  {
+    "num": 17,
+    "position": [0.3, 1.1],
+    "neighbours": [18],
+    "event_options": ["assets/event/campfire.json"],
+    "icon": "Mystery"
+  },
+  {
+    "num": 18,
+    "position": [0.5, 1.2],
+    "neighbours": [19],
+    "event_options": ["assets/event/campfire.json"],
+    "icon": "Mystery"
+  },
+  {
+    "num": 19,
+    "position": [0.5, 1.3],
+    "neighbours": [],
+    "event_options": ["assets/event/dragon.json"],
+    "icon": "Endboss"
   }
+
 ]
