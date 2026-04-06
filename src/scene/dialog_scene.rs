@@ -26,24 +26,24 @@ impl DialogScene {
 
 impl Scene for DialogScene {
     fn draw(&self, player: &Player) {
-        clear_background(WHITE);
+        clear_background(BACKGROUND);
         draw_texture_ex(
             self.get_dialog().get_texture(),
-            screen_width() * 0.05,
-            screen_height() * 0.05,
+            0.5 * (screen_width() - screen_height()),
+            screen_height() * 0.025,
             WHITE,
             DrawTextureParams {
-                dest_size: Some(Vec2::new(screen_width() * 0.9, screen_height() * 0.4)),
+                dest_size: Some(Vec2::new(2.0 * (screen_height() * 0.5), screen_height() * 0.5)),
                 ..Default::default()
             },
         );
         draw_shadowbox(Rect::new(
             screen_width() * 0.1,
-            screen_height() * 0.5,
+            screen_height() * 0.55,
             screen_width() * 0.8,
             screen_height() * 0.4,
         ));
-        let mut pos = Vec2::new(screen_width() * 0.15, screen_height() * 0.55);
+        let mut pos = Vec2::new(screen_width() * 0.15, screen_height() * 0.60);
         draw_h1(&mut pos, self.get_dialog().get_title());
         let dialog_box = self
             .get_dialog()

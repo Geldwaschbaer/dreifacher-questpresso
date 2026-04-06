@@ -116,7 +116,7 @@ impl MapScene {
 
 impl Scene for MapScene {
     fn draw(&self, player: &Player) {
-        clear_background(BLACK);
+        clear_background(BACKGROUND);
         draw_texture_ex(
             self.map.get_background(),
             0.0,
@@ -147,7 +147,6 @@ impl Scene for MapScene {
         let mut pos = Vec2::new(screen_width() * 0.8 + 10., screen_height() * 0.15 + 40.0);
         draw_h1(&mut pos, "  Legend");
         for (index, icon) in [
-            self.get_map().get_icon_endboss(),
             self.get_map().get_icon_boss(),
             self.get_map().get_icon_enemy(),
             self.get_map().get_icon_mystery(),
@@ -157,12 +156,12 @@ impl Scene for MapScene {
         .into_iter()
         .enumerate()
         {
-            draw_texture(icon, pos.x, pos.y - 24.0 + 32.0 * index as f32, WHITE);
+            draw_texture(icon, pos.x, pos.y - 24.0 + 32.0 * index as f32, HEADER_COL);
         }
         pos.x += 34.0;
         draw_p_ex(
             &mut pos,
-            "Endboss\nBoss\nEnemy\nMystery\nShop\nStart",
+            "Boss\nEnemy\nMystery\nShop\nStart",
             DrawParagraphParams {
                 font_size: 32.0,
                 ..Default::default()

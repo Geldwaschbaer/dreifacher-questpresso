@@ -4,6 +4,9 @@ use std::iter::Iterator;
 
 pub const ACTIVATED: Color = Color::from_hex(0x1b252e);
 pub const AVAILABLE: Color = Color::from_hex(0x585858);
+pub const TEXT_COL: Color = Color::from_hex(0x00AA00);
+pub const HEADER_COL: Color = Color::from_hex(0x55FF55);
+pub const BACKGROUND: Color = Color::from_hex(0x000000);
 
 pub fn draw_lifebar(offset: &mut Vec2, entity: &Entity) {
     draw_shadowbox(Rect::new(
@@ -52,7 +55,7 @@ pub fn draw_shadowbox(rect: Rect) {
 }
 
 pub fn draw_h1(pos: &mut Vec2, text: &str) {
-    draw_text(&text.to_uppercase(), pos.x, pos.y, 30.0, BLACK);
+    draw_text(&text.to_uppercase(), pos.x, pos.y, 30.0, HEADER_COL);
     pos.y += 30.;
 }
 
@@ -71,7 +74,7 @@ impl Default for DrawParagraphParams {
     fn default() -> DrawParagraphParams {
         DrawParagraphParams {
             font_size: 22.,
-            color: BLACK,
+            color: TEXT_COL,
             split_line: true,
             margin: Rect::new(0., 0., 0., 0.),
         }
@@ -107,7 +110,7 @@ where
     I: Into<&'a str>,
 {
     for (index, item) in items.enumerate() {
-        draw_text(&format!("{}. ", index + 1), pos.x - 10., pos.y, 22., BLACK);
+        draw_text(&format!("{}. ", index + 1), pos.x - 10., pos.y, 22., TEXT_COL);
         draw_p_ex(
             pos,
             item.into(),
@@ -122,7 +125,7 @@ where
 
 pub fn draw_attacks<'a>(pos: &mut Vec2, player: &Player, items: impl Iterator<Item = &'a Attack>) {
     for (index, item) in items.enumerate() {
-        draw_text(&format!("{}. ", index + 1), pos.x - 10., pos.y, 22., BLACK);
+        draw_text(&format!("{}. ", index + 1), pos.x - 10., pos.y, 22., TEXT_COL);
         draw_p_ex(
             pos,
             item.get_description(),
@@ -175,8 +178,8 @@ impl Default for DrawShadowboxParams {
     fn default() -> DrawShadowboxParams {
         DrawShadowboxParams {
             padding: Rect::new(2.0, 2.0, 2.0, 10.0),
-            fill: WHITE,
-            stroke: BLACK,
+            fill: BACKGROUND,
+            stroke: HEADER_COL,
         }
     }
 }
