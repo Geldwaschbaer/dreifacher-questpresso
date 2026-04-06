@@ -90,11 +90,7 @@
               },
               {
                 "type": "UpgradeStat",
-                "data": ["Dex", 1]
-              },
-              {
-                "type": "UpgradeStat",
-                "data": ["Str", 2]
+                "data": ["Str", 3]
               },
               {
                 "type": "LearnAttack",
@@ -103,7 +99,7 @@
                   "base_damage": 3,
                   "base_heal": 0,
                   "required_mana": 0,
-                  "scales_with": "Dex",
+                  "scales_with": "Str",
                   "receive_buffs": [{ "type": "Berserk" }]
                 }
               },
@@ -111,11 +107,11 @@
                 "type": "LearnAttack",
                 "data": {
                   "description": "Holy Strike (Applies Block to Self)",
-                  "base_damage": 6,
+                  "base_damage": 8,
                   "base_heal": 0,
-                  "required_mana": 1,
+                  "required_mana": 3,
                   "scales_with": "Str",
-                  "receive_buffs": [{ "type": "Block", "data": 4 }]
+                  "receive_buffs": [{ "type": "Block", "data": 8 }]
                 }
               }
             ],
@@ -125,7 +121,7 @@
             "description": "Cleric",
             "events": [
               { "type": "UpgradeStat", "data": ["Con", 3] },
-              { "type": "UpgradeStat", "data": ["Dex", 2] },
+              { "type": "UpgradeStat", "data": ["Dex", 1] },
               { "type": "UpgradeStat", "data": ["Int", 2] },
               {
                 "type": "LearnAttack",
@@ -133,7 +129,7 @@
                   "description": "Cast Holy Flame (Applies Burn to Enemy)",
                   "base_damage": 3,
                   "base_heal": 1,
-                  "required_mana": 0,
+                  "required_mana": 1,
                   "scales_with": "Dex",
                   "applied_buffs": [{ "type": "Burn", "data": 2 }]
                 }
@@ -144,7 +140,7 @@
                   "description": "Self-Heal (Applies Weak to Enemy and Block to self",
                   "base_damage": 0,
                   "base_heal": 5,
-                  "required_mana": 2,
+                  "required_mana": 1,
                   "scales_with": "Int",
                   "applied_buffs": [{ "type": "Weak" }],
                   "receive_buffs": [{ "type": "Block", "data": 5 }]

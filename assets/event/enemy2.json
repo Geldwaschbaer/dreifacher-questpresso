@@ -9,7 +9,7 @@
       "constitution": 3,
       "attacks": [
         {
-          "description": "Bite",
+          "description": "The Ant Colony bite you for 3 damage! How could they do this?",
           "base_damage": 2,
           "base_heal": 0,
           "required_mana": 0,

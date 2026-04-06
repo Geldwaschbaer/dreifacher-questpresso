@@ -9,18 +9,19 @@
       "constitution": 2,
       "attacks": [
         {
-          "description": "Bite",
+          "description": "The Snake bite you for 3 damage!",
           "base_damage": 2,
           "base_heal": 0,
           "required_mana": 0,
           "scales_with": "Dex"
         },
         {
-          "description": "Poisen",
+          "description": "You got poised from the snake!",
           "base_damage": 1,
           "base_heal": 0,
           "required_mana": 1,
-          "scales_with": "Int"
+          "scales_with": "Int",
+          "applied_buffs": [{ "type": "Poison", "data": 3}]
         }
       ],
       "texture": "assets/entity/enemy1.png"
