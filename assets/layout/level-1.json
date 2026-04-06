@@ -33,7 +33,7 @@
     "position": [0.5, 0.2],
     "neighbours": [],
     "event_options": ["assets/event/dragon.json"],
-    "texture": "assets/icon/final_boss.png"
+    "texture": "assets/icon/endboss.png"
   },
   {
     "position": [0.5, 0.4],
