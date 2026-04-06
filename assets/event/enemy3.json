@@ -9,14 +9,14 @@
       "constitution": 6,
       "attacks": [
         {
-          "description": "A Shark-Bite? That really hurt. You just lost 6 hp!",
+          "description": "The SHARK just bit off your leg! You just lost 6 HP! Luckily, cats can regenerate limbs!",
           "base_damage": 3,
           "base_heal": 0,
           "required_mana": 0,
           "scales_with": "Str"
         },
         {
-          "description": "The Water Fin special attack (TM) from a Great White Shark is\nsomething you won't see every day. This dealt 8 damage to you!",
+          "description": "The WATER FIN SPECIAL ATTACK (TM) from a GREAT WHITE SHARK is\nsomething you won't see every day. This dealt 8 DAMAGE to you!\n It's so OVER! D:",
           "base_damage": 5,
           "base_heal": 0,
           "required_mana": 3,
@@ -33,44 +33,44 @@
           "texture": "assets/dialog/battle_won.png",
           "dialogs": [
             {
-              "description": "You can upgrade one stat two times. Choose wich stat you want to upgrade.",
+              "description": "What are you still missing to become the most fearsome Donut that has ever existed?",
               "options": [
                 {
-                  "description": "Upgrade Strenght",
+                  "description": "Become STRONGER!",
                   "events": [
                     {
                       "type": "UpgradeStat",
-                      "data": ["Str", 2]
+                      "data": ["Str", 1]
                     }
                   ],
                   "next": 1
                 },
                 {
-                  "description": "Upgrade Dexterity",
+                  "description": "Become FASTER!",
                   "events": [
                     {
                       "type": "UpgradeStat",
-                      "data": ["Dex", 2]
+                      "data": ["Dex", 1]
                     }
                   ],
                   "next": 1
                 },
                 {
-                  "description": "Upgrade Constitution",
+                  "description": "Experience HEALTH",
                   "events": [
                     {
                       "type": "UpgradeStat",
-                      "data": ["Con", 2]
+                      "data": ["Con", 1]
                     }
                   ],
                   "next": 1
                 },
                 {
-                  "description": "Upgrade Intelligence",
+                  "description": "Gain a BRAIN CELL",
                   "events": [
                     {
                       "type": "UpgradeStat",
-                      "data": ["Int", 2]
+                      "data": ["Int", 1]
                     }
                   ],
                   "next": 1
@@ -78,10 +78,10 @@
               ]
             },
             {
-              "description": "The loot was added to your inventory.",
+              "description": "Wow you're so much better now! You won't feel it at all, but trust me the old you really fell off.",
               "options": [
                 {
-                  "description": "ok.",
+                  "description": "OK :3",
                   "events": [
                     {
                       "type": "ReturnToMap"
