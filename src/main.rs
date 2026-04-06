@@ -29,9 +29,9 @@ async fn main() {
     let since_the_epoch = start
         .duration_since(UNIX_EPOCH)
         .expect("time should go forward");
-    rand::srand((since_the_epoch.as_millis() >> 64) as u64);
+    rand::srand(since_the_epoch.as_millis() as u64);
     set_default_filter_mode(FilterMode::Nearest);
-    let mut player = Player::new();
+    let mut player = Player::new().await;
     let mut manager = SceneManager::new(MapScene::new(Map::new().await));
     manager.trigger_first_map_node(&mut player);
 
