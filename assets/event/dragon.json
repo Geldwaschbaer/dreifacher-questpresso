@@ -16,7 +16,7 @@
           "scales_with": "Int"
         }
       ],
-      "texture": "assets/dialog/dragon.png"
+      "texture": "assets/entity/dragon.png"
     },
     "on_death": [
       {
