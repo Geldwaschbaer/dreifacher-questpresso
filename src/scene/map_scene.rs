@@ -61,12 +61,16 @@ impl MapScene {
         for neig in map_node.get_neighbours() {
             let neig = self.get_map().get_map_node(*neig);
             let is_choosen = map_node.is_visited() && neig.is_visited();
-            let is_option = self.is_player_option(neig, player);
+            let is_option = self.is_player_option(neig, player)
+                && std::ptr::eq(
+                    self.get_map().get_map_node(player.get_map_position()),
+                    map_node,
+                );
             self.draw_path(
                 map_node,
                 neig,
                 is_option || is_choosen,
-                if is_option && map_node.is_visited() {
+                if is_option {
                     NEXT_COL
                 } else if is_choosen {
                     ACTIVATED
