@@ -5,7 +5,7 @@
     "texture": "assets/dialog/staircase.png",
     "dialogs": [
       {
-        "description": "It's time to go on an epic quest to slay the evil dragon that\nlurks in the depths of this dungeon\n",
+        "description": "It's time to go on an epic quest to slay the EVIL DRAGON that lurks in the depths of this DUNGEON\n",
         "options": [
             {
                 "description": "OK",
@@ -20,7 +20,7 @@
         ]
       },
       {
-        "description": "Unfortunately the 'brave' knight that was assigned to go on this quest\ntripped over a cat and fell off a cliff...\nSo now Donut, the totally unrelated cat, has to take up the cumbersome\nchore that the incompetent knight left behind.\n",
+        "description": "Unfortunately the 'brave' KNIGHT that was assigned to go on this quest tripped over a CAT and fell off a cliff...\nSo now Donut, the totally UNRELATED CAT, has to take up the cumbersome chore that the INCOMPETENT KNIGHT left behind.\n",
         "options": [
             {
                 "description": "OK",
@@ -35,7 +35,7 @@
         ]
       },
       {
-        "description": "NO WAY!! He would never do such a thing!\nDonut is a very well mannered feline! Shame on you for assuming\nsuch a horrible thing!!!\n",
+        "description": "NO WAY!! He would never do such a thing!\nDonut is a very WELL MANNERED feline! Shame on You for assuming such a horrible thing!!!\n",
         "options": [
             {
                 "description": "Sure...",
@@ -45,7 +45,7 @@
         ]
       },
       {
-        "description": "Choose your Class. Yes, even cats can have a hobby. It's nothing \nspecial dont worry about it :)\n",
+        "description": "Choose your CLASS. Yes even cats can have a hobby, it's nothing special DONT WORRY ABOUT IT :):)\n",
         "options": [
           {
             "description": "Wizard",
@@ -152,10 +152,10 @@
         ]
       },
       {
-        "description": "Great! you are such a talented little cat, Donut!\n",
+        "description": "Great! you are such a talented little CAT, Donut!\n",
         "options": [
           {
-            "description": "Let's kill something!",
+            "description": "miaow :3 (LET'S KILL SOMETHING!)",
             "events": [
               {
                 "type": "ReturnToMap"

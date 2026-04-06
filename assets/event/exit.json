@@ -2,7 +2,7 @@
   "type": "OpenDialog",
   "data": {
     "title": "donut left",
-    "texture": "assets/dialog/campfire.png",
+    "texture": "assets/dialog/exit.png",
     "dialogs": [
       {
                 "description": "Donut decided that this whole adventuring stuff is not what he wants to spend his precious lifetime with.",
