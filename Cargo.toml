@@ -1,9 +1,9 @@
 [package]
-name = "macroquad-template"
+name = "donut-the-cat"
 version = "0.1.0"
 edition = "2024"
-description = "macroquad template for our gamejam's"
-repository = "https://github.com/Geldwaschbär/raylib-wasm-template.git"
+description = "Donut the Cat is a roguelike text adventure for the Dreifacher Questpresso."
+repository = "https://github.com/Geldwaschbär/donut-the-cat.git"
 license = "MIT"
 
 [dependencies]

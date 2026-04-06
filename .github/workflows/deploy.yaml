@@ -28,7 +28,7 @@ jobs:
       - name: Prepare Deployment Directory
         run: |
           mkdir -p ./deploy
-          cp ./target/wasm32-unknown-unknown/release/macroquad-template.wasm ./deploy/
+          cp ./target/wasm32-unknown-unknown/release/donut-the-cat.wasm ./deploy/
           cp site/* ./deploy/
           cp -r assets/ ./deploy/
 

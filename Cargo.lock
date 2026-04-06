@@ -80,6 +80,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "donut-the-cat"
+version = "0.1.0"
+dependencies = [
+ "async_from",
+ "macroquad",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "equivalent"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -174,16 +184,6 @@ dependencies = [
  "macroquad_macro",
  "miniquad",
  "quad-rand",
-]
-
-[[package]]
-name = "macroquad-template"
-version = "0.1.0"
-dependencies = [
- "async_from",
- "macroquad",
- "serde",
- "serde_json",
 ]
 
 [[package]]

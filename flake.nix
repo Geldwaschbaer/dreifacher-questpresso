@@ -77,7 +77,7 @@
           };
           packages = {
             default = rustPlatform.buildRustPackage rec {
-              pname = "macroquad-template";
+              pname = "donut-the-cat";
               version = "0.1.0";
               src = ./.;
               cargoLock.lockFile = ./Cargo.lock;
