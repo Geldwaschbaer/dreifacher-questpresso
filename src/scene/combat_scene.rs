@@ -65,7 +65,7 @@ impl CombatScene {
             screen_height() * 0.3,
         ));
 
-        let mut pos = Vec2::new(screen_width() * 0.15, screen_height() * 0.75);
+        let mut pos = Vec2::new(screen_width() * 0.15, screen_height() * 0.70);
         draw_h1(&mut pos, self.get_enemy().get_entity().get_name());
         draw_p(
             &mut pos,
