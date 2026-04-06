@@ -1,5 +1,5 @@
 use crate::{
-    draw::{draw_h1, draw_ol, draw_p, draw_shadowbox},
+    draw::*,
     entity::{Stat, player::Player},
     map::Map,
     scene::{Scene, SceneTransition},
@@ -86,15 +86,33 @@ impl Scene for MapScene {
         set_default_camera();
         draw_shadowbox(Rect::new(
             screen_width() * 0.8,
-            screen_height() * 0.25,
+            screen_height() * 0.15,
             screen_width() * 0.18,
-            screen_height() * 0.2,
+            screen_height() * 0.3,
         ));
-        let mut pos = Vec2::new(screen_width() * 0.8 + 20., screen_height() * 0.25 + 40.0);
-        draw_h1(&mut pos, "Legende");
-        draw_ol(
+        let mut pos = Vec2::new(screen_width() * 0.8 + 10., screen_height() * 0.15 + 40.0);
+        draw_h1(&mut pos, "  Legend");
+        for (index, icon) in [
+            self.get_map().get_icon_endboss(),
+            self.get_map().get_icon_boss(),
+            self.get_map().get_icon_enemy(),
+            self.get_map().get_icon_mystery(),
+            self.get_map().get_icon_shop(),
+            self.get_map().get_icon_start(),
+        ]
+        .into_iter()
+        .enumerate()
+        {
+            draw_texture(icon, pos.x, pos.y - 24.0 + 32.0 * index as f32, WHITE);
+        }
+        pos.x += 34.0;
+        draw_p_ex(
             &mut pos,
-            ["Endboss", "Boss", "Enemy", "Mystery"].into_iter(),
+            "Endboss\nBoss\nEnemy\nMystery\nShop\nStart",
+            DrawParagraphParams {
+                font_size: 32.0,
+                ..Default::default()
+            },
         );
 
         draw_shadowbox(Rect::new(
@@ -121,10 +139,8 @@ impl Scene for MapScene {
         let (x, y) = mouse_position();
         if is_mouse_button_down(MouseButton::Middle) || is_mouse_button_down(MouseButton::Right) {
             if let Some(position) = self.last_pos {
-                let dx = x - position.x;
-                let dy = y - position.y;
                 // Just ignore horizontal movement for now.
-                // self.camera_pos.x += dx;
+                let dy = y - position.y;
                 self.camera_pos.y += dy;
             }
         }

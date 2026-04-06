@@ -9,6 +9,12 @@ use serde::Deserialize;
 pub struct Map {
     rooms: Vec<Room>,
     background: Texture2D,
+    icon_endboss: Texture2D,
+    icon_boss: Texture2D,
+    icon_enemy: Texture2D,
+    icon_mystery: Texture2D,
+    icon_shop: Texture2D,
+    icon_start: Texture2D,
 }
 
 impl Map {
@@ -71,6 +77,30 @@ impl Map {
     pub fn get_background(&self) -> &Texture2D {
         &self.background
     }
+
+    pub fn get_icon_boss(&self) -> &Texture2D {
+        &self.icon_boss
+    }
+
+    pub fn get_icon_endboss(&self) -> &Texture2D {
+        &self.icon_endboss
+    }
+
+    pub fn get_icon_enemy(&self) -> &Texture2D {
+        &self.icon_enemy
+    }
+
+    pub fn get_icon_mystery(&self) -> &Texture2D {
+        &self.icon_mystery
+    }
+
+    pub fn get_icon_shop(&self) -> &Texture2D {
+        &self.icon_shop
+    }
+
+    pub fn get_icon_start(&self) -> &Texture2D {
+        &self.icon_start
+    }
 }
 
 pub struct Room {
@@ -125,7 +155,40 @@ impl AsyncFrom<MapBuilder> for Map {
             .await
             .expect("map background exists");
         background.set_filter(FilterMode::Nearest);
-        Map { rooms, background }
+
+        let icon_boss = load_texture("assets/icon/boss.png")
+            .await
+            .expect("map background exists");
+        icon_boss.set_filter(FilterMode::Nearest);
+        let icon_endboss = load_texture("assets/icon/endboss.png")
+            .await
+            .expect("map background exists");
+        icon_endboss.set_filter(FilterMode::Nearest);
+        let icon_enemy = load_texture("assets/icon/enemy.png")
+            .await
+            .expect("map background exists");
+        icon_enemy.set_filter(FilterMode::Nearest);
+        let icon_mystery = load_texture("assets/icon/mystery.png")
+            .await
+            .expect("map background exists");
+        let icon_shop = load_texture("assets/icon/shop.png")
+            .await
+            .expect("map background exists");
+        icon_shop.set_filter(FilterMode::Nearest);
+        let icon_start = load_texture("assets/icon/start.png")
+            .await
+            .expect("map background exists");
+        icon_start.set_filter(FilterMode::Nearest);
+        Map {
+            rooms,
+            background,
+            icon_boss,
+            icon_endboss,
+            icon_enemy,
+            icon_mystery,
+            icon_shop,
+            icon_start,
+        }
     }
 }
 
