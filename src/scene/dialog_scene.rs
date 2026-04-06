@@ -33,7 +33,10 @@ impl Scene for DialogScene {
             screen_height() * 0.025,
             WHITE,
             DrawTextureParams {
-                dest_size: Some(Vec2::new(2.0 * (screen_height() * 0.5), screen_height() * 0.5)),
+                dest_size: Some(Vec2::new(
+                    2.0 * (screen_height() * 0.5),
+                    screen_height() * 0.5,
+                )),
                 ..Default::default()
             },
         );

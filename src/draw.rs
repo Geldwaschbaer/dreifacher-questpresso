@@ -110,7 +110,13 @@ where
     I: Into<&'a str>,
 {
     for (index, item) in items.enumerate() {
-        draw_text(&format!("{}. ", index + 1), pos.x - 10., pos.y, 22., TEXT_COL);
+        draw_text(
+            &format!("{}. ", index + 1),
+            pos.x - 10.,
+            pos.y,
+            22.,
+            TEXT_COL,
+        );
         draw_p_ex(
             pos,
             item.into(),
@@ -125,7 +131,13 @@ where
 
 pub fn draw_attacks<'a>(pos: &mut Vec2, player: &Player, items: impl Iterator<Item = &'a Attack>) {
     for (index, item) in items.enumerate() {
-        draw_text(&format!("{}. ", index + 1), pos.x - 10., pos.y, 22., TEXT_COL);
+        draw_text(
+            &format!("{}. ", index + 1),
+            pos.x - 10.,
+            pos.y,
+            22.,
+            TEXT_COL,
+        );
         draw_p_ex(
             pos,
             item.get_description(),

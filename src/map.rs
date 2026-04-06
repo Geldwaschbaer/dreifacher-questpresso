@@ -42,75 +42,20 @@ impl Map {
         &self.background
     }
 
-    pub fn get_icon_boss(&self) -> &Texture2D {
-        &self.icon_boss
-    }
-
-    pub fn get_icon_endboss(&self) -> &Texture2D {
-        &self.icon_endboss
-    }
-
-    pub fn get_icon_enemy(&self) -> &Texture2D {
-        &self.icon_enemy
-    }
-
-    pub fn get_icon_mystery(&self) -> &Texture2D {
-        &self.icon_mystery
-    }
-
-    pub fn get_icon_shop(&self) -> &Texture2D {
-        &self.icon_shop
-    }
-
-    pub fn get_icon_start(&self) -> &Texture2D {
-        &self.icon_start
-    }
-}
-
-pub struct Room {
-    event: Event,
-    position: Vec2,
-    neighbours: Vec<usize>,
-    visited: bool,
-    texture: Texture2D,
-}
-
-impl Room {
-    pub fn get_event(&self) -> &Event {
-        &self.event
-    }
-
-    pub fn get_position(&self) -> Vec2 {
-        self.position
-    }
-
-    pub fn get_neighbours(&self) -> &Vec<usize> {
-        &self.neighbours
-    }
-
-    pub fn is_visited(&self) -> bool {
-        self.visited
-    }
-
-    pub fn mark_visited(&mut self) {
-        self.visited = true;
-    }
-
-    pub fn get_icon(&self) -> &Texture2D {
-        &self.texture
+    pub fn get_icon(&self, icon: &MapIcon) -> &Texture2D {
+        match icon {
+            MapIcon::Boss => &self.icon_boss,
+            MapIcon::Endboss => &self.icon_endboss,
+            MapIcon::Enemy => &self.icon_enemy,
+            MapIcon::Mystery => &self.icon_mystery,
+            MapIcon::Shop => &self.icon_shop,
+            MapIcon::Start => &self.icon_start,
+        }
     }
 }
 
 #[derive(Deserialize)]
 pub struct MapBuilder(Vec<RoomBuilder>);
-
-#[derive(Deserialize)]
-pub struct RoomBuilder {
-    event_options: Vec<String>,
-    position: (f32, f32),
-    neighbours: Vec<usize>,
-    texture: String,
-}
 
 #[async_trait]
 impl AsyncFrom<MapBuilder> for Map {
@@ -160,6 +105,58 @@ impl AsyncFrom<MapBuilder> for Map {
     }
 }
 
+#[derive(Deserialize)]
+pub enum MapIcon {
+    Boss,
+    Endboss,
+    Enemy,
+    Mystery,
+    Shop,
+    Start,
+}
+
+pub struct Room {
+    event: Event,
+    position: Vec2,
+    neighbours: Vec<usize>,
+    visited: bool,
+    icon: MapIcon,
+}
+
+impl Room {
+    pub fn get_event(&self) -> &Event {
+        &self.event
+    }
+
+    pub fn get_position(&self) -> Vec2 {
+        self.position
+    }
+
+    pub fn get_neighbours(&self) -> &Vec<usize> {
+        &self.neighbours
+    }
+
+    pub fn is_visited(&self) -> bool {
+        self.visited
+    }
+
+    pub fn mark_visited(&mut self) {
+        self.visited = true;
+    }
+
+    pub fn get_icon(&self) -> &MapIcon {
+        &self.icon
+    }
+}
+
+#[derive(Deserialize)]
+pub struct RoomBuilder {
+    event_options: Vec<String>,
+    position: (f32, f32),
+    neighbours: Vec<usize>,
+    icon: MapIcon,
+}
+
 #[async_trait]
 impl AsyncFrom<RoomBuilder> for Room {
     async fn async_from(builder: RoomBuilder) -> Room {
@@ -181,16 +178,12 @@ impl AsyncFrom<RoomBuilder> for Room {
                 Event::ReturnToMap
             }
         };
-        let texture = load_texture(&builder.texture)
-            .await
-            .expect("texture exists");
-        texture.set_filter(FilterMode::Nearest);
         Room {
             event,
             position: Vec2::new(builder.position.0, builder.position.1),
             neighbours: builder.neighbours,
             visited: false,
-            texture,
+            icon: builder.icon,
         }
     }
 }

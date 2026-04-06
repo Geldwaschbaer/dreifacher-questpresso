@@ -1,7 +1,7 @@
 use crate::{
     draw::*,
     entity::{Stat, player::Player},
-    map::{Map, Room},
+    map::{Map, MapIcon, Room},
     scene::{Scene, SceneTransition},
 };
 use macroquad::prelude::*;
@@ -73,7 +73,12 @@ impl MapScene {
                 AVAILABLE
             },
         );
-        draw_texture(room.get_icon(), x - 16.0, y - 16.0, WHITE);
+        draw_texture(
+            self.get_map().get_icon(room.get_icon()),
+            x - 16.0,
+            y - 16.0,
+            WHITE,
+        );
         if room.is_visited() {
             draw_arc(x, y, 120, 26., 0., 3., 360., BLACK)
         }
@@ -147,11 +152,11 @@ impl Scene for MapScene {
         let mut pos = Vec2::new(screen_width() * 0.8 + 10., screen_height() * 0.15 + 40.0);
         draw_h1(&mut pos, "  Legend");
         for (index, icon) in [
-            self.get_map().get_icon_boss(),
-            self.get_map().get_icon_enemy(),
-            self.get_map().get_icon_mystery(),
-            self.get_map().get_icon_shop(),
-            self.get_map().get_icon_start(),
+            self.get_map().get_icon(&MapIcon::Boss),
+            self.get_map().get_icon(&MapIcon::Enemy),
+            self.get_map().get_icon(&MapIcon::Mystery),
+            self.get_map().get_icon(&MapIcon::Shop),
+            self.get_map().get_icon(&MapIcon::Start),
         ]
         .into_iter()
         .enumerate()

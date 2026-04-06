@@ -19,18 +19,19 @@ impl CombatScene {
     }
 
     fn draw_entity(&self, entity: &Entity, entity_pos: Vec2, mut lifebar_pos: Vec2) {
-        let shadow_texture: Texture2D = Texture2D::from_file_with_format(include_bytes!("../../assets/icon/shadow.png"), None);
+        let shadow_texture: Texture2D =
+            Texture2D::from_file_with_format(include_bytes!("../../assets/icon/shadow.png"), None);
         draw_lifebar(&mut lifebar_pos, entity);
         draw_texture_ex(
-                &shadow_texture,
-                entity_pos.x,
-                entity_pos.y + 128.0,
-                WHITE,
-                DrawTextureParams {
-                    dest_size: Some(Vec2::splat(256.0)),
-                    ..Default::default()
-                },
-            );
+            &shadow_texture,
+            entity_pos.x,
+            entity_pos.y + 128.0,
+            WHITE,
+            DrawTextureParams {
+                dest_size: Some(Vec2::splat(256.0)),
+                ..Default::default()
+            },
+        );
         // Draw texture only if the frame after cooldown is even,
         // therefore skipping odd frames and creating a flicker effect.
         if self.is_even_frame() {
@@ -128,7 +129,8 @@ impl CombatScene {
 impl Scene for CombatScene {
     fn draw(&self, player: &Player) {
         set_default_filter_mode(FilterMode::Nearest);
-        let shadow_texture: Texture2D = Texture2D::from_file_with_format(include_bytes!("../../assets/icon/shadow.png"), None);
+        let shadow_texture: Texture2D =
+            Texture2D::from_file_with_format(include_bytes!("../../assets/icon/shadow.png"), None);
         clear_background(BACKGROUND);
         draw_texture_ex(
             player.get_combat_bg(),
@@ -136,7 +138,7 @@ impl Scene for CombatScene {
             0.0,
             WHITE,
             DrawTextureParams {
-                dest_size: Some(Vec2::new(screen_width(), screen_width()/2.0)),
+                dest_size: Some(Vec2::new(screen_width(), screen_width() / 2.0)),
                 ..Default::default()
             },
         );

@@ -3,42 +3,42 @@
     "position": [0.5, 0.8],
     "neighbours": [1, 2],
     "event_options": ["assets/event/welcome.json"],
-    "texture": "assets/icon/start.png"
+    "icon": "Start"
   },
   {
     "position": [0.3, 0.6],
     "neighbours": [3, 6],
     "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
-    "texture": "assets/icon/enemy.png"
+    "icon": "Enemy"
   },
   {
     "position": [0.7, 0.6],
     "neighbours": [3, 4],
     "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
-    "texture": "assets/icon/enemy.png"
+    "icon": "Enemy"
   },
   {
     "position": [0.3, 0.4],
     "neighbours": [5],
     "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
-    "texture": "assets/icon/enemy.png"
+    "icon": "Enemy"
   },
   {
     "position": [0.7, 0.4],
     "neighbours": [5],
     "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
-    "texture": "assets/icon/enemy.png"
+    "icon": "Enemy"
   },
   {
     "position": [0.5, 0.2],
     "neighbours": [],
     "event_options": ["assets/event/dragon.json"],
-    "texture": "assets/icon/endboss.png"
+    "icon": "Endboss"
   },
   {
     "position": [0.5, 0.4],
     "neighbours": [5],
     "event_options": ["assets/event/campfire.json"],
-    "texture": "assets/icon/mystery.png"
+    "icon": "Mystery"
   }
 ]
