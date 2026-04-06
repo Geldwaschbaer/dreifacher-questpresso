@@ -22,6 +22,7 @@ pub struct Entity {
     attacks: Vec<Attack>,
     buffs: Vec<Buff>,
     texture: Texture2D,
+    lost_hp: bool,
 }
 
 impl Entity {
@@ -37,6 +38,7 @@ impl Entity {
             attacks: Vec::new(),
             buffs: Vec::new(),
             texture,
+            lost_hp: false,
         }
     }
 
@@ -59,6 +61,9 @@ impl Entity {
                 damage = buff.translate_damage_received(damage);
             }
             target.hit_points = (target.hit_points - damage).max(0);
+            if damage > 0 {
+                target.lost_hp = true;
+            }
             self.hit_points = (self.hit_points + heal).min(self.constitution * 5);
             self.mana -= attack.get_required_mana();
         }
@@ -84,6 +89,7 @@ impl Entity {
             buff.end_of_turn(self);
         }
         self.buffs.clear();
+        self.lost_hp = false;
     }
 
     pub fn get_name(&self) -> &str {
@@ -113,6 +119,10 @@ impl Entity {
 
     pub fn is_alive(&self) -> bool {
         self.hit_points > 0
+    }
+
+    pub fn has_lost_hp(&self) -> bool {
+        self.lost_hp
     }
 
     pub fn get_attacks(&self) -> &Vec<Attack> {
@@ -154,6 +164,7 @@ impl AsyncFrom<EntityBuilder> for Entity {
             attacks: value.attacks,
             buffs: Vec::new(),
             texture,
+            lost_hp: false,
         }
     }
 }

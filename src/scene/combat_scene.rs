@@ -42,7 +42,7 @@ impl CombatScene {
         );
         // Draw texture only if the frame after cooldown is even,
         // therefore skipping odd frames and creating a flicker effect.
-        if self.is_even_frame() {
+        if self.is_even_frame() || !entity.has_lost_hp() {
             draw_texture_ex(
                 entity.get_texture(),
                 entity_pos.x,
