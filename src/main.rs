@@ -6,6 +6,7 @@ mod map;
 mod scene;
 
 use macroquad::prelude::*;
+#[cfg(not(target_arch = "wasm32"))]
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use crate::{
@@ -24,13 +25,23 @@ fn window_conf() -> Conf {
     }
 }
 
-#[macroquad::main(window_conf)]
-async fn main() {
+#[cfg(target_arch = "wasm32")]
+pub fn now() -> u64 {
+    instant::now() as u64
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+pub fn now() -> u64 {
     let start = SystemTime::now();
     let since_the_epoch = start
         .duration_since(UNIX_EPOCH)
         .expect("time should go forward");
-    rand::srand(since_the_epoch.as_millis() as u64);
+    since_the_epoch.as_millis() as u64
+}
+
+#[macroquad::main(window_conf)]
+async fn main() {
+    rand::srand(now());
     set_default_filter_mode(FilterMode::Nearest);
     let mut player = Player::new().await;
     let mut manager = SceneManager::new(MapScene::new(Map::new().await));

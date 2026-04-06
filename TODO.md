@@ -1,0 +1,17 @@
+- [x] Fix map lines not correctly drawn
+- [x] Fix status effects not cleared at end of combat
+- [x] Only blink when Entity got damage
+- [x] Draw Dragon
+- [x] Show what Enemy did -> Enter Sentence
+- [x] Draw Status Effects
+- [x] Legende
+- [x] Extra images for:
+  - start node
+  - background nodes
+  - ...
+- [x] Move map with right or middle button
+- [x] Add blink animation when hit
+- [x] Allow images in dialogs
+- [x] Status Effects
+  - Burning
+  - Weakened
