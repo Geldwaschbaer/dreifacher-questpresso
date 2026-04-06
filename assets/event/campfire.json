@@ -26,6 +26,14 @@
             "description": "Thanks!",
             "events": [
               {
+                "type": "RestoreHp",
+                "data": 999
+              },
+              {
+                "type": "RestoreMp",
+                "data": 999
+              },
+              {
                 "type": "ReturnToMap"
               }
             ],
