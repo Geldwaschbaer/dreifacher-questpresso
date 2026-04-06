@@ -30,12 +30,12 @@ impl Scene for GameOverScene {
             },
         );
         draw_p_ex(
-            &mut Vec2::new(screen_width() * 0.5 - 26.0 * 5.0, screen_width() * 0.25),
+            &mut Vec2::new(screen_width() * 0.5 - 26.0 * 5.0, screen_height() * 0.45),
             &format!("{}\n\nPress ESC/Q to quit.", self.reason),
             DrawParagraphParams {
                 font_size: 26.0,
                 split_line: true,
-                color: DARKPURPLE,
+                color: VIOLET,
                 ..Default::default()
             },
         );
