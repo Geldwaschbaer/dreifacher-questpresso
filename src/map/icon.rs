@@ -9,6 +9,7 @@ pub enum MapIcon {
     Mystery,
     Shop,
     Start,
+    Exit,
 }
 
 impl MapIcon {

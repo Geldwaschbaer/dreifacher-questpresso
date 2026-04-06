@@ -12,7 +12,7 @@ use serde::Deserialize;
 pub struct Map {
     map_nodes: Vec<MapNode>,
     background: Texture2D,
-    icons: [Texture2D; 6],
+    icons: [Texture2D; 7],
 }
 
 impl Map {
@@ -81,6 +81,9 @@ impl AsyncFrom<MapBuilder> for Map {
                     .await
                     .expect("map background exists"),
                 load_texture("assets/icon/start.png")
+                    .await
+                    .expect("map background exists"),
+                load_texture("assets/icon/exit.png")
                     .await
                     .expect("map background exists"),
             ],
