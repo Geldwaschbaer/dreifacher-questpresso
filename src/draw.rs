@@ -76,6 +76,7 @@ pub struct DrawParagraphParams {
     pub font_size: f32,
     pub color: Color,
     pub split_line: bool,
+    pub line_length: f32,
     pub margin: Rect,
 }
 
@@ -85,6 +86,7 @@ impl Default for DrawParagraphParams {
             font_size: 22.,
             color: TEXT_COL,
             split_line: true,
+            line_length: screen_width() * 0.8,
             margin: Rect::new(0., 0., 0., 0.),
         }
     }
@@ -93,14 +95,34 @@ impl Default for DrawParagraphParams {
 pub fn draw_p_ex(pos: &mut Vec2, text: &str, params: DrawParagraphParams) {
     if params.split_line {
         for line in text.split("\n") {
-            draw_text(
-                line,
-                pos.x + params.margin.x,
-                pos.y + params.margin.y,
-                params.font_size,
-                params.color,
-            );
-            pos.y += params.font_size + params.margin.y + params.margin.h;
+            let mut buffer = String::new();
+            for word in line.split(" ") {
+                if (buffer.len() + word.len()) as f32 * params.font_size * 0.5 < params.line_length
+                {
+                    buffer.push_str(word);
+                    buffer.push_str(" ");
+                } else {
+                    draw_text(
+                        &buffer,
+                        pos.x + params.margin.x,
+                        pos.y + params.margin.y,
+                        params.font_size,
+                        params.color,
+                    );
+                    pos.y += params.font_size + params.margin.y + params.margin.h;
+                    buffer = String::new();
+                }
+            }
+            if !buffer.is_empty() {
+                draw_text(
+                    &buffer,
+                    pos.x + params.margin.x,
+                    pos.y + params.margin.y,
+                    params.font_size,
+                    params.color,
+                );
+                pos.y += params.font_size + params.margin.y + params.margin.h;
+            }
         }
     } else {
         draw_text(
