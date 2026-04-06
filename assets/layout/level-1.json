@@ -17,14 +17,23 @@
     "num": 2,
     "position": [0.3, 0.3],
     "neighbours": [4],
-    "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json"
+    ],
     "icon": "Enemy"
   },
   {
     "num": 3,
     "position": [0.7, 0.3],
     "neighbours": [4],
-    "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json",
+            "assets/event/campfire.json"
+    ],
     "icon": "Mystery"
   },
   {
@@ -38,21 +47,34 @@
     "num": 5,
     "position": [0.4, 0.55],
     "neighbours": [7, 8],
-    "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json", "assets/event/campfire.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json",
+            "assets/event/campfire.json"
+    ],
     "icon": "Mystery"
   },
   {
     "num": 6,
     "position": [0.6, 0.6],
     "neighbours": [9, 11],
-    "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json"
+    ],
     "icon": "Enemy"
   },
   {
     "num": 7,
     "position": [0.3, 0.5],
     "neighbours": [8],
-    "event_options": ["assets/event/enemy1.json", "assets/event/enemy2.json"],
+    "event_options": [
+            "assets/event/enemy1.json",
+            "assets/event/enemy2.json",
+            "assets/event/enemy3.json"
+    ],
     "icon": "Enemy"
   },
   {
@@ -139,5 +161,4 @@
     "event_options": ["assets/event/dragon.json"],
     "icon": "Endboss"
   }
-
 ]
