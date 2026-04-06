@@ -24,6 +24,7 @@ fn window_conf() -> Conf {
 
 #[macroquad::main(window_conf)]
 async fn main() {
+    set_default_filter_mode(FilterMode::Nearest);
     let mut player = Player::new();
     let mut manager = SceneManager::new(MapScene::new(Map::new().await));
     manager.trigger_first_room(&mut player);

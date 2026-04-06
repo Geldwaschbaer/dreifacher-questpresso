@@ -67,31 +67,25 @@ impl AsyncFrom<MapBuilder> for Map {
         let background = load_texture("assets/backgrounds/map-bg.png")
             .await
             .expect("map background exists");
-        background.set_filter(FilterMode::Nearest);
 
         let icon_boss = load_texture("assets/icon/boss.png")
             .await
             .expect("map background exists");
-        icon_boss.set_filter(FilterMode::Nearest);
         let icon_endboss = load_texture("assets/icon/endboss.png")
             .await
             .expect("map background exists");
-        icon_endboss.set_filter(FilterMode::Nearest);
         let icon_enemy = load_texture("assets/icon/enemy.png")
             .await
             .expect("map background exists");
-        icon_enemy.set_filter(FilterMode::Nearest);
         let icon_mystery = load_texture("assets/icon/mystery.png")
             .await
             .expect("map background exists");
         let icon_shop = load_texture("assets/icon/shop.png")
             .await
             .expect("map background exists");
-        icon_shop.set_filter(FilterMode::Nearest);
         let icon_start = load_texture("assets/icon/start.png")
             .await
             .expect("map background exists");
-        icon_start.set_filter(FilterMode::Nearest);
         Map {
             rooms,
             background,

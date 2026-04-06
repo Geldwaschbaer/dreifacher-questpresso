@@ -128,9 +128,6 @@ impl CombatScene {
 
 impl Scene for CombatScene {
     fn draw(&self, player: &Player) {
-        set_default_filter_mode(FilterMode::Nearest);
-        let shadow_texture: Texture2D =
-            Texture2D::from_file_with_format(include_bytes!("../../assets/icon/shadow.png"), None);
         clear_background(BACKGROUND);
         draw_texture_ex(
             player.get_combat_bg(),

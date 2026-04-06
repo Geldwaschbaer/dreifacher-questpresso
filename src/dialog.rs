@@ -1,6 +1,6 @@
 use crate::event::{Event, EventBuilder};
 use async_from::{AsyncFrom, async_trait};
-use macroquad::texture::{FilterMode, Texture2D, load_texture};
+use macroquad::texture::{Texture2D, load_texture};
 use serde::Deserialize;
 
 #[derive(Clone)]
@@ -41,7 +41,6 @@ impl AsyncFrom<DialogBuilder> for Dialog {
         let texture = load_texture(&value.texture)
             .await
             .expect("expect dialog texture exists");
-        texture.set_filter(FilterMode::Nearest);
         Dialog {
             title: value.title,
             dialogs,

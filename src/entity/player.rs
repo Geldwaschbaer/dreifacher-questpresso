@@ -1,7 +1,4 @@
-use macroquad::{
-    input::is_key_pressed,
-    texture::{FilterMode, Texture2D},
-};
+use macroquad::{input::is_key_pressed, texture::Texture2D};
 
 use crate::{entity::Entity, event::Event, scene::KEY_CODES, scene::SceneTransition};
 
@@ -16,12 +13,10 @@ impl Player {
     pub fn new() -> Player {
         let texture =
             Texture2D::from_file_with_format(include_bytes!("../../assets/entity/donut.png"), None);
-        texture.set_filter(FilterMode::Nearest);
         let combat = Texture2D::from_file_with_format(
             include_bytes!("../../assets/backgrounds/battle-bg.png"),
             None,
         );
-        combat.set_filter(FilterMode::Nearest);
         Player {
             map_position: 0,
             dialog_position: 0,

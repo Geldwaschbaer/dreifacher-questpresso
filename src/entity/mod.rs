@@ -3,7 +3,7 @@ pub mod enemy;
 pub mod player;
 
 use async_from::{AsyncFrom, async_trait};
-use macroquad::texture::{FilterMode, Texture2D, load_texture};
+use macroquad::texture::{Texture2D, load_texture};
 use serde::Deserialize;
 
 use crate::entity::buff::Buff;
@@ -137,7 +137,6 @@ pub struct EntityBuilder {
 impl AsyncFrom<EntityBuilder> for Entity {
     async fn async_from(value: EntityBuilder) -> Self {
         let texture = load_texture(&value.texture).await.expect("texture exists");
-        texture.set_filter(FilterMode::Nearest);
         Entity {
             name: value.name,
             hit_points: value.constitution * 5,
