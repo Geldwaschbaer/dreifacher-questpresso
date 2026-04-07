@@ -47,12 +47,6 @@ async fn main() {
     let mut manager = SceneManager::new(MapScene::new(Map::new().await));
     manager.trigger_first_map_node(&mut player);
 
-    debug!(
-        "Welcome to Donut the cat!\nStarting with:\n - width: {}\n - height: {}",
-        screen_width(),
-        screen_height()
-    );
-
     loop {
         #[cfg(not(target_arch = "wasm32"))]
         if is_key_down(KeyCode::Q) || is_key_down(KeyCode::Escape) {

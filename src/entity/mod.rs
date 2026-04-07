@@ -5,7 +5,6 @@ pub mod player;
 pub mod stat;
 
 use async_from::{AsyncFrom, async_trait};
-use macroquad::logging::debug;
 use macroquad::texture::{Texture2D, load_texture};
 use serde::Deserialize;
 
@@ -48,9 +47,7 @@ impl Entity {
         if self.mana >= attack.get_required_mana() {
             for buff in attack.get_applied_buffs() {
                 target.buffs.push(buff.clone());
-                debug!("added buff: {:?}", buff);
             }
-            debug!("buffs: {:?}", &target.buffs);
             for buff in attack.get_received_buffs() {
                 self.buffs.push(buff.clone())
             }
